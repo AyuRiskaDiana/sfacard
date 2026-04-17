@@ -9,14 +9,16 @@
             <i class="bi bi-house"></i> <span>Dashboard</span>
         </a>
     </li>
+    
+
      <?php if(session()->get('role') == 'admin'): ?>
     <li>
-        <a href="<?= base_url('users') ?>">Users</a>
+        <a href="<?= base_url('users') ?>">Data Users</a>
     </li>
 <?php endif; ?>
 
         <?php if(session()->get('role') == 'admin'): ?>
-    <a href="<?= base_url('pengaduan') ?>">Data Pengaduan</a>
+    <a href="<?= base_url('pengaduan') ?>">Data Aspirasi</a>
 <?php endif; ?>
 
 <?php if(session()->get('role') != 'admin'): ?>
@@ -26,12 +28,6 @@
     
      <?php $idu = session('id_user'); ?>
    
-
-    <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('pengaduan/feedback/') ?>">
-            <i class="bi bi-person-gear"></i> <span>Feedback</span>
-        </a>
-    </li>
  <li class="nav-item">
         <a class="nav-link" href="<?= base_url('pengaduan/history/') ?>">
             <i class="bi bi-person-gear"></i> <span>History</span>

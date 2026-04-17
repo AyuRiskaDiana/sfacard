@@ -1,24 +1,84 @@
-<h3>History Pengaduan (Selesai)</h3>
+<div style="padding:20px;">
 
-<table border="1">
-    <tr>
-        <th>Judul</th>
-        <th>Lokasi</th>
-        <th>Tanggal</th>
-        <th>Status</th>
-        <th>Feedback</th>
-    </tr>
+    <h2>Status Laporan Aspirasi</h2>
 
-    <?php foreach($pengaduan as $p): ?>
-    <tr>
-        <td><?= $p['judul'] ?></td>
-        <td><?= $p['lokasi'] ?></td>
-        <td><?= $p['tanggal'] ?></td>
-        <td><?= $p['status'] ?></td>
-        <td><?= $p['isi_feedback'] ?? 'Belum ada' ?></td>
-    </tr>
-    <?php endforeach; ?>
-</table>
+    <?php if(session()->getFlashdata('success')): ?>
+        <p style="color:green;">
+            <?= session()->getFlashdata('success') ?>
+        </p>
+    <?php endif; ?>
 
-<br>
-<a href="<?= base_url('dashboard') ?>">Kembali</a>
+    <table border="1" cellpadding="10" cellspacing="0">
+        <tr>
+            <th>Nama</th>
+            <th>Judul</th>
+            <th>Lokasi</th>
+            <th>Status</th>
+            <th>Foto</th>
+            <th>Tanggal</th>
+            <th>Feedback</th>
+            <th>Kategori</th>
+
+            <?php if (session()->get('role') == 'admin') : ?>
+                <th>Aksi</th>
+            <?php endif; ?>
+        </tr>
+
+        <?php foreach($pengaduan as $p): ?>
+        <tr>
+
+            <td><?= $p['nama'] ?? '-' ?></td>
+            <td><?= $p['judul'] ?></td>
+            <td><?= $p['lokasi'] ?></td>
+
+            <td><?= $p['status'] ?></td>
+
+            <td>
+                <?php if(!empty($p['foto'])): ?>
+                    <img src="<?= base_url('uploads/'.$p['foto']) ?>" width="80">
+                <?php else: ?>
+                    -
+                <?php endif; ?>
+            </td>
+
+            <td><?= $p['tanggal'] ?></td>
+
+            <td>
+                <?= $p['isi_feedback'] ?? 'Belum ada feedback' ?>
+            </td>
+
+            <td>
+                <?= $p['kategori'] ?? '-' ?>
+            </td>
+
+            <?php if(session()->get('role') == 'admin'): ?>
+            <td>
+
+                <a href="<?= base_url('pengaduan/edit/'.$p['id_pengaduan']) ?>">
+                    Edit
+                </a> |
+
+                <a href="<?= base_url('pengaduan/delete/'.$p['id_pengaduan']) ?>"
+                   onclick="return confirm('Yakin hapus data?')">
+                    Hapus
+                </a> |
+
+                <a href="<?= base_url('pengaduan/feedback/'.$p['id_pengaduan']) ?>">
+                    Feedback
+                </a>
+
+            </td>
+            <?php endif; ?>
+
+        </tr>
+        <?php endforeach; ?>
+
+    </table>
+
+</div>
+
+<p>
+    <a href="<?= base_url('dashboard') ?>">
+        ← Kembali ke Dashboard
+    </a>
+</p>

@@ -1,75 +1,113 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<div class="container mt-4">
+<div style="padding:20px;">
 
-    <h2 class="mb-3">Data Pengaduan</h2>
+    <h2>Laporan Aspirasi</h2>
 
-    <?php if(session()->get('role') != 'admin'): ?>
-    <a href="<?= base_url('pengaduan/create') ?>" class="btn btn-primary mb-3">
-        + Tambah Pengaduan
-    </a>
-<?php endif; ?>
-
-    <table class="table table-bordered table-striped">
-        <thead class="table-dark">
-            <tr>
-                <th>Judul</th>
-                <th>Lokasi</th>
-                <th>Status</th>
-                <th>Foto</th>
-                <th>Tanggal</th>
-                 <th>Feedback</th>
-                <?php if (session()->get('role') == 'admin') : ?>
-                    <th width="150">Aksi</th>
-                <?php endif; ?>
-            </tr>
-        </thead>
-
-        <tbody>
-        <?php foreach($pengaduan as $p): ?>
-            <tr>
-                <td><?= $p['judul'] ?></td>
-                <td><?= $p['lokasi'] ?></td>
-                <td>
-                    <span class="badge bg-warning">
-                        <?= $p['status'] ?>
-                    </span>
-                </td>
-                <td>
-    <?php if($p['foto']): ?>
-        <img src="<?= base_url('uploads/'.$p['foto']) ?>" width="80">
+    <?php if(session()->getFlashdata('success')): ?>
+        <p style="color:green;">
+            <?= session()->getFlashdata('success') ?>
+        </p>
     <?php endif; ?>
-</td>
 
-<td><?= $p['tanggal'] ?></td>
+    <?php if(session()->get('role') == 'admin'): ?>
 
-<td>
-    <?= $p['isi_feedback'] ? $p['isi_feedback'] : 'Belum ada feedback' ?>
-</td>
+    <form method="get" action="<?= base_url('pengaduan') ?>">
+        <p>
+            Tanggal:
+            <input type="date" name="tanggal">
+
+            Bulan:
+            <input type="month" name="bulan">
+
+            Siswa/Guru:
+            <input type="text" name="id_user" placeholder="ID User">
+
+            Kategori:
+            <select name="id_aspirasi">
+                <option value="">Semua</option>
+
+                <?php if(!empty($aspirasi)): ?>
+                    <?php foreach($aspirasi as $a): ?>
+                        <option value="<?= $a['id_aspirasi'] ?>">
+                            <?= $a['kategori'] ?>
+                        </option>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+
+            </select>
+
+            <button type="submit">Cari</button>
+        </p>
+    </form>
+
+    <?php endif; ?>
+
+    <table border="1" cellpadding="10" cellspacing="0">
+        <tr>
+            <th>Nama</th>
+            <th>Judul</th>
+            <th>Lokasi</th>
+            <th>Status</th>
+            <th>Foto</th>
+            <th>Tanggal</th>
+            <th>Feedback</th>
+            <th>Kategori</th>
+
+            <?php if (session()->get('role') == 'admin') : ?>
+                <th>Aksi</th>
+            <?php endif; ?>
+        </tr>
+
+        <?php foreach($pengaduan as $p): ?>
+        <tr>
+
+            <td><?= $p['nama'] ?? '-' ?></td>
+            <td><?= $p['judul'] ?></td>
+            <td><?= $p['lokasi'] ?></td>
+
+            <td><?= $p['status'] ?></td>
 
             <td>
-<?php if(session()->get('role') == 'admin'): ?>
-    
-    <a href="<?= base_url('pengaduan/edit/'.$p['id_pengaduan']) ?>" 
-       class="btn btn-warning btn-sm">Edit</a>
+                <?php if(!empty($p['foto'])): ?>
+                    <img src="<?= base_url('uploads/'.$p['foto']) ?>" width="80">
+                <?php else: ?>
+                    -
+                <?php endif; ?>
+            </td>
 
-    <a href="<?= base_url('pengaduan/delete/'.$p['id_pengaduan']) ?>" 
-       class="btn btn-danger btn-sm"
-       onclick="return confirm('Yakin hapus data?')">Hapus</a>
+            <td><?= $p['tanggal'] ?></td>
 
-<a href="<?= base_url('pengaduan/feedback/'.$p['id_pengaduan']) ?>">Feedback</a><?php else: ?>
-    -
-<?php endif; ?>
-</td>
-</tr>
+            <td>
+                <?= $p['isi_feedback'] ?? 'Belum ada feedback' ?>
+            </td>
+
+            <td>
+                <?= $p['kategori'] ?? '-' ?>
+            </td>
+
+            <?php if(session()->get('role') == 'admin'): ?>
+            <td>
+
+                <a href="<?= base_url('pengaduan/edit/'.$p['id_pengaduan']) ?>">Edit</a> |
+                
+                <a href="<?= base_url('pengaduan/delete/'.$p['id_pengaduan']) ?>"
+                   onclick="return confirm('Yakin hapus data?')">Hapus</a> |
+                
+                <a href="<?= base_url('pengaduan/feedback/'.$p['id_pengaduan']) ?>">
+                    Feedback
+                </a>
+
+            </td>
+            <?php endif; ?>
+
+        </tr>
         <?php endforeach; ?>
 
-        </tbody>
     </table>
-    
 
 </div>
-<div class="mt-3">
-    <a href="<?= base_url('dashboard') ?>" class="btn btn-secondary">
+
+<p>
+    <a href="<?= base_url('dashboard') ?>">
         ← Kembali ke Dashboard
     </a>
-</div>
+</p>

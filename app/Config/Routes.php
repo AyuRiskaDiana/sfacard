@@ -39,8 +39,10 @@ $routes->post('/pengaduan/update/(:num)', 'Pengaduan::update/$1');
 $routes->get('/pengaduan/delete/(:num)', 'Pengaduan::delete/$1');
 
 $routes->get('/pengaduan/feedback/(:num)', 'Pengaduan::feedback/$1');
-$routes->post('/pengaduan/saveFeedback', 'Pengaduan::saveFeedback');
+$routes->post('/pengaduan/feedback/save', 'Pengaduan::saveFeedback');
 
 $routes->get('/pengaduan/history', 'Pengaduan::history');
-$routes->get('/users/edit', 'Users::edit');
-
+$routes->get('/users/edit/(:num)', 'Users::edit/$1');
+$routes->post('/users/update/(:num)', 'Users::update/$1');
+$routes->get('/pengaduan/kategori/(:num)', 'Pengaduan::perKategori/$1');
+$routes->get('users/admin', 'Users::admin');

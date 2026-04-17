@@ -10,6 +10,7 @@ class PengaduanModel extends Model
 
     protected $allowedFields = [
     'id_user',
+    'id_aspirasi',
     'judul',
     'foto',
     'lokasi',

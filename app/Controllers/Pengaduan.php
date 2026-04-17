@@ -9,37 +9,25 @@ class Pengaduan extends BaseController
 {
     public function feedback($id)
 {
-    if(session()->get('role') != 'admin'){
-        return redirect()->to('/dashboard');
-    }
-
     $data['pengaduan'] = $this->pengaduan->find($id);
 
     return view('pengaduan/feedback', $data);
 }
 
-
 public function saveFeedback()
 {
-    if(session()->get('role') != 'admin'){
-        return redirect()->to('/dashboard');
-    }
+    $model = new \App\Models\FeedbackModel();
 
-    $feedback = new \App\Models\FeedbackModel();
-
-    $id_pengaduan = $this->request->getPost('id_pengaduan');
-
-    // simpan feedback
-    $feedback->save([
-        'id_pengaduan' => $id_pengaduan,
-        'isi_feedback' => $this->request->getPost('isi_feedback'),
-        'tanggal' => date('Y-m-d')
+    $model->save([
+        'id_pengaduan' => $this->request->getPost('id_pengaduan'),
+        'isi_feedback' => $this->request->getPost('isi_feedback')
     ]);
 
-    // 🔥 update status otomatis jadi selesai
-    $this->pengaduan->update($id_pengaduan, [
-        'status' => 'selesai'
-    ]);
+    // otomatis selesai
+    $this->pengaduan->update(
+        $this->request->getPost('id_pengaduan'),
+        ['status' => 'selesai']
+    );
 
     return redirect()->to('/pengaduan');
 }
@@ -51,11 +39,11 @@ public function history()
     $builder->select('pengaduan.*, feedback.isi_feedback');
     $builder->join('feedback', 'feedback.id_pengaduan = pengaduan.id_pengaduan', 'left');
 
-    // 👉 jika admin
+    // jika admin
     if(session()->get('role') == 'admin'){
         $builder->where('pengaduan.status', 'selesai');
     }
-    // 👉 jika siswa / guru
+    //  jika siswa / guru
     else{
         $builder->where('pengaduan.id_user', session()->get('id_user'));
         $builder->where('pengaduan.status', 'selesai');
@@ -72,28 +60,64 @@ public function history()
         $this->pengaduan = new PengaduanModel();
     }
 
-   public function index()
+  public function index()
 {
-    if(session()->get('role') != 'admin'){
-        return redirect()->to('/dashboard');
-    }
-
     $db = \Config\Database::connect();
-
     $builder = $db->table('pengaduan');
-    $builder->select('pengaduan.*, feedback.isi_feedback');
+
+    $builder->select('pengaduan.*, users.nama, aspirasi.kategori, feedback.isi_feedback');
+
+    $builder->join('users', 'users.id_user = pengaduan.id_user', 'left');
+    $builder->join('aspirasi', 'aspirasi.id_aspirasi = pengaduan.id_aspirasi', 'left');
     $builder->join('feedback', 'feedback.id_pengaduan = pengaduan.id_pengaduan', 'left');
 
-    $query = $builder->get();
+    // 🔥 ROLE FILTER (INI YANG DIPERBAIKI)
+    if(session()->get('role') != 'admin'){
+        $builder->where('pengaduan.id_user', session()->get('id_user'));
+    }
 
-    $data['pengaduan'] = $query->getResultArray();
+    // 🔥 AMBIL DATA FILTER
+    $tanggal      = $this->request->getGet('tanggal');
+    $bulan        = $this->request->getGet('bulan');
+    $id_user      = $this->request->getGet('id_user');
+    $id_aspirasi  = $this->request->getGet('id_aspirasi');
+
+    // 🔥 FILTER TANGGAL
+    if(!empty($tanggal)){
+        $builder->where('pengaduan.tanggal', $tanggal);
+    }
+
+    // 🔥 FILTER BULAN
+    if(!empty($bulan)){
+        $builder->like('pengaduan.tanggal', $bulan, 'after');
+    }
+
+    // 🔥 FILTER SISWA (khusus admin)
+    if(!empty($id_user) && session()->get('role') == 'admin'){
+        $builder->where('pengaduan.id_user', $id_user);
+    }
+
+    // 🔥 FILTER KATEGORI
+    if(!empty($id_aspirasi)){
+        $builder->where('pengaduan.id_aspirasi', $id_aspirasi);
+    }
+
+    $data['pengaduan'] = $builder->get()->getResultArray();
+
+    // dropdown kategori
+    $data['aspirasi'] = $db->table('aspirasi')->get()->getResultArray();
 
     return view('pengaduan/index', $data);
 }
-    public function create()
-    {
-        return view('pengaduan/create');
-    }
+   public function create()
+{
+    $db = \Config\Database::connect();
+
+    $data['aspirasi'] = $db->table('aspirasi')->get()->getResultArray();
+
+    return view('pengaduan/create', $data);
+    
+}
 public function delete($id)
 {
     if(session()->get('role') != 'admin'){
@@ -162,12 +186,12 @@ public function update($id)
         'lokasi'    => $this->request->getPost('lokasi'),
         'deskripsi' => $this->request->getPost('deskripsi'),
         'tanggal'   => $this->request->getPost('tanggal'),
-        'status'    => 'menunggu'
-        
+        'status'    => 'menunggu',
+        'kategori' => $this->request->getPost('kategori')
     ]);
+    session()->setFlashdata('success', 'Aspirasi telah dikirim!!');
     
-    return redirect()->to('/pengaduan');
-    
+return redirect()->to('/pengaduan/create'); // BALIK KE CREATE    
     
 }
 }

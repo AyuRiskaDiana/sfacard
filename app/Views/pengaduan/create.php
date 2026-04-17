@@ -1,50 +1,116 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<div class="container mt-5">
+<div>
 
-    <div class="card shadow">
-        <div class="card-header bg-primary text-white">
-            <h4>Tambah Pengaduan</h4>
-        </div>
+<?php if(session()->get('role') == 'admin'): ?>
 
-        <div class="card-body">
+    <h3>Tambah User</h3>
 
-        <form action="<?= base_url('pengaduan/store') ?>" method="post" enctype="multipart/form-data">
-                <div class="mb-3">
-                    <label>Judul</label>
-                    <input type="text" name="judul" class="form-control" placeholder="Masukkan judul">
-                </div>
+    <form action="<?= base_url('users/store') ?>" method="post" enctype="multipart/form-data">
 
-                <div class="mb-3">
-                    <label>Lokasi</label>
-                    <input type="text" name="lokasi" class="form-control" placeholder="Masukkan lokasi">
-                </div>
+        <p>
+            Nama:<br>
+            <input type="text" name="nama" required>
+        </p>
 
-                <div class="mb-3">
-                    <label>Deskripsi</label>
-                    <textarea name="deskripsi" class="form-control" rows="4" placeholder="Masukkan deskripsi"></textarea>
-                </div>
-                
-                <div class="mb-3">
-                <label>Foto</label>
-                <input type="file" name="foto" class="form-control">
-                </div>
+        <p>
+            Username:<br>
+            <input type="text" name="username" required>
+        </p>
 
-                <div class="mb-3">
-    <           label>Tanggal</label>
-                <input type="date" name="tanggal" class="form-control">
-                </div>
+        <p>
+            Password:<br>
+            <input type="password" name="password" required>
+        </p>
 
-                <button type="submit" class="btn btn-success">
-                    Simpan
-                </button>
+        <p>
+            Role:<br>
+            <select name="role" required>
+                <option value="">-- Pilih Role --</option>
+                <option value="admin">Admin</option>
+                <option value="guru">Guru</option>
+                <option value="siswa">Siswa</option>
+            </select>
+        </p>
 
-                <a href="<?= base_url('pengaduan') ?>" class="btn btn-secondary">
-                    Kembali
-                </a>
+        <p>
+            Foto:<br>
+            <input type="file" name="foto">
+        </p>
 
-            </form>
+        <p>
+            <button type="submit">Simpan</button>
+            <a href="<?= base_url('users') ?>">Kembali</a>
+        </p>
 
-        </div>
-    </div>
+    </form>
+
+<?php else: ?>
+
+
+<?php endif; ?>
+
+</div>
+
+</div>
+
+<div>
+
+    <h4>Tambah Aspirasi Baru</h4>
+
+    <?php if(session()->getFlashdata('success')): ?>
+        <p><?= session()->getFlashdata('success'); ?></p>
+    <?php endif; ?>
+
+    <form action="<?= base_url('pengaduan/store') ?>" method="post" enctype="multipart/form-data">
+
+        <p>
+            <label>Aspirasi</label><br>
+            <select name="id_aspirasi">
+                <option value="">Pilih Kategori</option>
+
+                <?php if(!empty($aspirasi)): ?>
+                    <?php foreach($aspirasi as $a): ?>
+                        <option value="<?= $a['id_aspirasi'] ?>">
+                            <?= $a['kategori'] ?>
+                        </option>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <option value="1">Kerusakan</option>
+                    <option value="2">Kinerja Guru</option>
+                    <option value="3">Kebijakan Sekolah</option>
+                <?php endif; ?>
+            </select>
+        </p>
+
+        <p>
+            <label>Judul</label><br>
+            <input type="text" name="judul" placeholder="Masukkan judul">
+        </p>
+
+        <p>
+            <label>Lokasi</label><br>
+            <input type="text" name="lokasi" placeholder="Masukkan lokasi">
+        </p>
+
+        <p>
+            <label>Deskripsi</label><br>
+            <textarea name="deskripsi" rows="4" placeholder="Jelaskan Secara Detail.."></textarea>
+        </p>
+
+        <p>
+            <label>Foto</label><br>
+            <input type="file" name="foto">
+        </p>
+
+        <p>
+            <label>Tanggal</label><br>
+            <input type="date" name="tanggal">
+        </p>
+
+        <p>
+            <button type="submit">Kirim Pengaduan</button>
+            <a href="<?= base_url('pengaduan') ?>">Kembali</a>
+        </p>
+
+    </form>
 
 </div>
