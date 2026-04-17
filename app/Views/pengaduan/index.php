@@ -55,8 +55,7 @@
     <a href="<?= base_url('pengaduan/delete/'.$p['id_pengaduan']) ?>" 
        class="btn btn-danger btn-sm"
        onclick="return confirm('Yakin hapus data?')">Hapus</a>
-</td>
-       <td>
+
 <a href="<?= base_url('pengaduan/feedback/'.$p['id_pengaduan']) ?>">Feedback</a><?php else: ?>
     -
 <?php endif; ?>
