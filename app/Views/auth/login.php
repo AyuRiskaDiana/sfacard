@@ -1,26 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
 
-    <!-- Bootstrap CSS Lokal -->
     <link href="<?= base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
     <link href="<?= base_url('assets/bootstrap-icons-1.13.1/bootstrap-icons.css') ?>" rel="stylesheet">
+
+    <style>
+        body {
+            height: 100vh;
+            background: linear-gradient(135deg, #6f42c1, #d63384);
+        }
+
+        .login-container {
+            height: 100vh;
+        }
+
+        .login-card {
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .left-panel {
+            background: #fff;
+            padding: 40px;
+        }
+
+        .right-panel {
+            background: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .right-panel img {
+            max-width: 80%;
+        }
+
+        .form-control {
+            border-radius: 10px;
+        }
+
+        .btn-primary {
+            border-radius: 10px;
+        }
+    </style>
 </head>
 
-<body class="bg-light">
+<body>
 
-    <div class="container d-flex justify-content-center align-items-center vh-100">
-        <div class="card shadow" style="width: 380px;">
-            <div class="card-header bg-primary text-white text-center">
-                <h4 class="mb-0">Login</h4>
-            </div>
+<div class="container login-container d-flex justify-content-center align-items-center">
+    <div class="card login-card shadow" style="width: 900px;">
+        <div class="row g-0">
 
-            <div class="card-body">
+            <!-- KIRI (FORM) -->
+            <div class="col-md-6 left-panel">
+                <h4 class="mb-3 fw-bold">Welcome Back!</h4>
+                <p class="text-muted">Please sign in to continue</p>
 
-                <!-- Pesan Error -->
                 <?php if (session()->getFlashdata('error')): ?>
                     <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
                 <?php endif; ?>
@@ -29,37 +67,38 @@
                     <div class="alert alert-danger"><?= session()->getFlashdata('salahpw') ?></div>
                 <?php endif; ?>
 
-                <!-- Form Login -->
                 <form action="<?= base_url('/proses-login') ?>" method="post">
 
                     <div class="mb-3">
-                        <label class="form-label">Username</label>
-                        <input type="text" name="username" class="form-control" placeholder="Masukkan username" required>
+                        <input type="text" name="username" class="form-control"
+                               placeholder="Username" required>
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Password</label>
-                        <input type="password" name="password" class="form-control" placeholder="Masukkan password" required>
+                        <input type="password" name="password" class="form-control"
+                               placeholder="Password" required>
                     </div>
 
                     <button class="btn btn-primary w-100">
-                        <i class="bi bi-box-arrow-in-right"></i> Sign In
+                        Login
                     </button>
-
                 </form>
 
-                <!-- Tombol Tambah User -->
                 <div class="text-center mt-3">
-                    <a href="<?= base_url('users/create') ?>" class="btn btn-outline-success btn-sm">
-                        <i class="bi bi-person-plus"></i> Daftar Baru
-                    </a>
+                    <small>Belum punya akun?</small><br>
+                    <a href="<?= base_url('users/create') ?>">Register Now</a>
                 </div>
-
             </div>
+
+            <!-- KANAN (GAMBAR) -->
+            <div class="col-md-6 right-panel">
+                <img src="<?= base_url('uploads/login/login.png') ?>" alt="login">
+            </div>
+
         </div>
     </div>
+</div>
 
-    <script src="<?= base_url('assets/js/bootstrap.bundle.min.js') ?>"></script>
+<script src="<?= base_url('assets/js/bootstrap.bundle.min.js') ?>"></script>
 </body>
-
 </html>

@@ -1,113 +1,182 @@
-<div style="padding:20px;">
+<?= $this->extend('layouts/main') ?>
+<?= $this->section('content') ?>
 
-    <h2>Laporan Aspirasi</h2>
+<div class="container mt-4">
 
-    <?php if(session()->getFlashdata('success')): ?>
-        <p style="color:green;">
+    <!-- HEADER -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4 class="fw-bold">
+            <i class="bi bi-clipboard-data text-primary"></i> Laporan Aspirasi
+        </h4>
+
+        <?php if (session()->get('role') != 'user'): ?>
+            <a href="<?= base_url('pengaduan/create') ?>" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> Pengaduan
+            </a>
+        <?php endif; ?>
+    </div>
+
+    <!-- ALERT -->
+    <?php if (session()->getFlashdata('success')): ?>
+        <div class="alert alert-success">
+            <i class="bi bi-check-circle"></i>
             <?= session()->getFlashdata('success') ?>
-        </p>
+        </div>
     <?php endif; ?>
 
-    <?php if(session()->get('role') == 'admin'): ?>
+    <!-- FILTER (ADMIN) -->
+    <?php if (session()->get('role') == 'admin'): ?>
+    <div class="card mb-3 shadow-sm">
+        <div class="card-body">
 
-    <form method="get" action="<?= base_url('pengaduan') ?>">
-        <p>
-            Tanggal:
-            <input type="date" name="tanggal">
+            <form method="get" action="<?= base_url('pengaduan') ?>" class="row g-2">
 
-            Bulan:
-            <input type="month" name="bulan">
+                <div class="col-md-2">
+                    <input type="date" name="tanggal" class="form-control">
+                </div>
 
-            Siswa/Guru:
-            <input type="text" name="id_user" placeholder="ID User">
+                <div class="col-md-2">
+                    <input type="month" name="bulan" class="form-control">
+                </div>
 
-            Kategori:
-            <select name="id_aspirasi">
-                <option value="">Semua</option>
+                <div class="col-md-2">
+                    <input type="text" name="id_user" class="form-control" placeholder="Nama User">
+                </div>
 
-                <?php if(!empty($aspirasi)): ?>
-                    <?php foreach($aspirasi as $a): ?>
-                        <option value="<?= $a['id_aspirasi'] ?>">
-                            <?= $a['kategori'] ?>
-                        </option>
-                    <?php endforeach; ?>
-                <?php endif; ?>
+                <div class="col-md-3">
+                    <select name="id_aspirasi" class="form-control">
+                        <option value="">Semua Kategori</option>
+                        <?php foreach ($aspirasi as $a): ?>
+                            <option value="<?= $a['id_aspirasi'] ?>">
+                                <?= $a['kategori'] ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
 
-            </select>
+                <div class="col-md-2">
+                    <button type="submit" class="btn w-100 text-white"
+                        style="background: linear-gradient(135deg,#6a5af9,#3b82f6); border:none;">
+                        <i class="bi bi-search"></i> Cari
+                    </button>
+                </div>
 
-            <button type="submit">Cari</button>
-        </p>
-    </form>
+            </form>
 
+        </div>
+    </div>
     <?php endif; ?>
 
-    <table border="1" cellpadding="10" cellspacing="0">
-        <tr>
-            <th>Nama</th>
-            <th>Judul</th>
-            <th>Lokasi</th>
-            <th>Status</th>
-            <th>Foto</th>
-            <th>Tanggal</th>
-            <th>Feedback</th>
-            <th>Kategori</th>
+    <!-- TABLE -->
+    <div class="card shadow rounded-4">
+        <div class="card-body p-0">
 
-            <?php if (session()->get('role') == 'admin') : ?>
-                <th>Aksi</th>
-            <?php endif; ?>
-        </tr>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle text-center mb-0">
 
-        <?php foreach($pengaduan as $p): ?>
-        <tr>
+                    <thead class="table-primary">
+                        <tr>
+                            <th>Nama</th>
+                            <th>Tanggal</th>
+                            <th>Judul</th>
+                            <th>Lokasi</th>
+                            <th>Kategori</th>
+                            <th>Foto</th>
+                            <th>Status</th>
+                            <th>Feedback</th>
 
-            <td><?= $p['nama'] ?? '-' ?></td>
-            <td><?= $p['judul'] ?></td>
-            <td><?= $p['lokasi'] ?></td>
+                            <?php if (session()->get('role') == 'admin'): ?>
+                                <th width="200">Aksi</th>
+                            <?php endif; ?>
+                        </tr>
+                    </thead>
 
-            <td><?= $p['status'] ?></td>
+                    <tbody>
+                    <?php if (!empty($pengaduan)): ?>
+                        <?php foreach ($pengaduan as $p): ?>
+                        <tr>
 
-            <td>
-                <?php if(!empty($p['foto'])): ?>
-                    <img src="<?= base_url('uploads/'.$p['foto']) ?>" width="80">
-                <?php else: ?>
-                    -
-                <?php endif; ?>
-            </td>
+                            <td><?= $p['nama'] ?? '-' ?></td>
+                            <td><?= $p['tanggal'] ?></td>
+                            <td class="fw-semibold"><?= $p['judul'] ?></td>
+                            <td><?= $p['lokasi'] ?></td>
+                            <td><?= $p['kategori'] ?? '-' ?></td>
 
-            <td><?= $p['tanggal'] ?></td>
+                            <td>
+                                <?php if (!empty($p['foto'])): ?>
+                                    <img src="<?= base_url('uploads/' . $p['foto']) ?>" 
+                                         width="60" height="60"
+                                         class="rounded border">
+                                <?php else: ?>
+                                    <span class="text-muted">-</span>
+                                <?php endif; ?>
+                            </td>
 
-            <td>
-                <?= $p['isi_feedback'] ?? 'Belum ada feedback' ?>
-            </td>
+                            <td>
+                                <span class="badge bg-warning text-dark">
+                                    <?= $p['status'] ?>
+                                </span>
+                            </td>
 
-            <td>
-                <?= $p['kategori'] ?? '-' ?>
-            </td>
+                            <td>
+                                <?= $p['isi_feedback'] ?? 'Belum ada feedback' ?>
+                            </td>
 
-            <?php if(session()->get('role') == 'admin'): ?>
-            <td>
+                            <?php if (session()->get('role') == 'admin'): ?>
+                            <td>
+                                <div class="d-flex justify-content-center gap-2">
 
-                <a href="<?= base_url('pengaduan/edit/'.$p['id_pengaduan']) ?>">Edit</a> |
-                
-                <a href="<?= base_url('pengaduan/delete/'.$p['id_pengaduan']) ?>"
-                   onclick="return confirm('Yakin hapus data?')">Hapus</a> |
-                
-                <a href="<?= base_url('pengaduan/feedback/'.$p['id_pengaduan']) ?>">
-                    Feedback
-                </a>
+                                    <!-- EDIT -->
+                                    <a href="<?= base_url('pengaduan/edit/' . $p['id_pengaduan']) ?>" 
+                                       class="btn btn-outline-warning border-2"
+                                       style="padding:10px;">
+                                        <i class="bi bi-pencil-square" style="font-size:20px;"></i>
+                                    </a>
 
-            </td>
-            <?php endif; ?>
+                                    <!-- HAPUS -->
+                                    <a href="<?= base_url('pengaduan/delete/' . $p['id_pengaduan']) ?>" 
+                                       class="btn btn-outline-danger border-2"
+                                       style="padding:10px;"
+                                       onclick="return confirm('Yakin hapus data?')">
+                                        <i class="bi bi-trash-fill" style="font-size:20px;"></i>
+                                    </a>
 
-        </tr>
-        <?php endforeach; ?>
+                                    <!-- FEEDBACK -->
+                                    <a href="<?= base_url('pengaduan/feedback/' . $p['id_pengaduan']) ?>" 
+                                       class="btn btn-info text-white">
+                                        <i class="bi bi-chat-left-text"></i> Feedback
+                                    </a>
 
-    </table>
+                                </div>
+                            </td>
+                            <?php endif; ?>
+
+                        </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="9" class="text-muted">
+                                <i class="bi bi-info-circle"></i> Belum ada data
+                            </td>
+                        </tr>
+                    <?php endif; ?>
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- BACK -->
+    <div class="mt-3">
+        <a href="<?= base_url('dashboard') ?>" 
+           class="btn text-white"
+           style="background: linear-gradient(135deg,#6a5af9,#3b82f6);">
+            <i class="bi bi-arrow-left"></i> Kembali ke Dashboard
+        </a>
+    </div>
 
 </div>
 
-<p>
-    <a href="<?= base_url('dashboard') ?>">
-        ← Kembali ke Dashboard
-    </a>
-</p>
+<?= $this->endSection() ?>

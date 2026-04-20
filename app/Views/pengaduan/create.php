@@ -1,116 +1,93 @@
-<div>
+<?= $this->extend('layouts/main') ?>
+<?= $this->section('content') ?>
 
-<?php if(session()->get('role') == 'admin'): ?>
+<div class="container mt-4">
 
-    <h3>Tambah User</h3>
+<?php if(session()->get('role') == 'guru' || session()->get('role') == 'siswa'): ?>
 
-    <form action="<?= base_url('users/store') ?>" method="post" enctype="multipart/form-data">
+    <div class="card shadow rounded-4">
+        <div class="card-body">
 
-        <p>
-            Nama:<br>
-            <input type="text" name="nama" required>
-        </p>
+            <h4 class="mb-3">
+                <i class="bi bi-plus-circle text-primary"></i> Tambah Aspirasi Baru
+            </h4>
 
-        <p>
-            Username:<br>
-            <input type="text" name="username" required>
-        </p>
+            <?php if(session()->getFlashdata('success')): ?>
+                <div class="alert alert-success">
+                    <?= session()->getFlashdata('success'); ?>
+                </div>
+            <?php endif; ?>
 
-        <p>
-            Password:<br>
-            <input type="password" name="password" required>
-        </p>
+            <form action="<?= base_url('pengaduan/store') ?>" method="post" enctype="multipart/form-data">
 
-        <p>
-            Role:<br>
-            <select name="role" required>
-                <option value="">-- Pilih Role --</option>
-                <option value="admin">Admin</option>
-                <option value="guru">Guru</option>
-                <option value="siswa">Siswa</option>
-            </select>
-        </p>
+                <div class="mb-3">
+                    <label class="form-label">Kategori</label>
+                    <select name="id_aspirasi" class="form-control">
+                        <option value="">Pilih Kategori</option>
 
-        <p>
-            Foto:<br>
-            <input type="file" name="foto">
-        </p>
+                        <?php if(!empty($aspirasi)): ?>
+                            <?php foreach($aspirasi as $a): ?>
+                                <option value="<?= $a['id_aspirasi'] ?>">
+                                    <?= $a['kategori'] ?>
+                                </option>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <option value="1">Kerusakan</option>
+                            <option value="2">Kinerja Guru</option>
+                            <option value="3">Kebijakan Sekolah</option>
+                        <?php endif; ?>
 
-        <p>
-            <button type="submit">Simpan</button>
-            <a href="<?= base_url('users') ?>">Kembali</a>
-        </p>
+                    </select>
+                </div>
 
-    </form>
+                <div class="mb-3">
+                    <label class="form-label">Judul</label>
+                    <input type="text" name="judul" class="form-control" placeholder="Masukkan judul">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Lokasi</label>
+                    <input type="text" name="lokasi" class="form-control" placeholder="Masukkan lokasi">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Deskripsi</label>
+                    <textarea name="deskripsi" class="form-control" rows="4" placeholder="Jelaskan secara detail..."></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Foto</label>
+                    <input type="file" name="foto" class="form-control">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Tanggal</label>
+                    <input type="date" name="tanggal" class="form-control">
+                </div>
+
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-send"></i> Kirim
+                    </button>
+
+                    <a href="<?= base_url('pengaduan') ?>" class="btn btn-secondary">
+                        <i class="bi bi-arrow-left"></i> Kembali
+                    </a>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
 
 <?php else: ?>
 
+    <div class="alert alert-warning">
+        Halaman ini hanya untuk user/guru.
+    </div>
 
 <?php endif; ?>
 
 </div>
 
-</div>
-
-<div>
-
-    <h4>Tambah Aspirasi Baru</h4>
-
-    <?php if(session()->getFlashdata('success')): ?>
-        <p><?= session()->getFlashdata('success'); ?></p>
-    <?php endif; ?>
-
-    <form action="<?= base_url('pengaduan/store') ?>" method="post" enctype="multipart/form-data">
-
-        <p>
-            <label>Aspirasi</label><br>
-            <select name="id_aspirasi">
-                <option value="">Pilih Kategori</option>
-
-                <?php if(!empty($aspirasi)): ?>
-                    <?php foreach($aspirasi as $a): ?>
-                        <option value="<?= $a['id_aspirasi'] ?>">
-                            <?= $a['kategori'] ?>
-                        </option>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <option value="1">Kerusakan</option>
-                    <option value="2">Kinerja Guru</option>
-                    <option value="3">Kebijakan Sekolah</option>
-                <?php endif; ?>
-            </select>
-        </p>
-
-        <p>
-            <label>Judul</label><br>
-            <input type="text" name="judul" placeholder="Masukkan judul">
-        </p>
-
-        <p>
-            <label>Lokasi</label><br>
-            <input type="text" name="lokasi" placeholder="Masukkan lokasi">
-        </p>
-
-        <p>
-            <label>Deskripsi</label><br>
-            <textarea name="deskripsi" rows="4" placeholder="Jelaskan Secara Detail.."></textarea>
-        </p>
-
-        <p>
-            <label>Foto</label><br>
-            <input type="file" name="foto">
-        </p>
-
-        <p>
-            <label>Tanggal</label><br>
-            <input type="date" name="tanggal">
-        </p>
-
-        <p>
-            <button type="submit">Kirim Pengaduan</button>
-            <a href="<?= base_url('pengaduan') ?>">Kembali</a>
-        </p>
-
-    </form>
-
-</div>
+<?= $this->endSection() ?>

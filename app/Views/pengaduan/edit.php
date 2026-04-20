@@ -1,4 +1,6 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<?= $this->extend('layouts/main') ?>
+<?= $this->section('content') ?>
+
 
 <div class="container mt-5">
 
@@ -9,9 +11,9 @@
 
         <div class="card-body">
 
-            <form action="<?= base_url('pengaduan/update/'.$pengaduan['id_pengaduan']) ?>" 
-                  method="post" 
-                  enctype="multipart/form-data">
+            <form action="<?= base_url('pengaduan/update/' . $pengaduan['id_pengaduan']) ?>"
+                method="post"
+                enctype="multipart/form-data">
 
                 <!-- simpan foto lama -->
                 <input type="hidden" name="foto_lama" value="<?= $pengaduan['foto'] ?>">
@@ -24,8 +26,8 @@
 
                 <div class="mb-3">
                     <label>Foto Sekarang</label><br>
-                    <?php if($pengaduan['foto']): ?>
-                        <img src="<?= base_url('uploads/'.$pengaduan['foto']) ?>" width="100"><br><br>
+                    <?php if ($pengaduan['foto']): ?>
+                        <img src="<?= base_url('uploads/' . $pengaduan['foto']) ?>" width="100"><br><br>
                     <?php endif; ?>
 
                     <input type="file" name="foto" class="form-control">
@@ -52,9 +54,9 @@
                 <div class="mb-3">
                     <label>Status</label>
                     <select name="status" class="form-control">
-                        <option value="menunggu" <?= ($pengaduan['status']=='menunggu')?'selected':'' ?>>Menunggu</option>
-                        <option value="proses" <?= ($pengaduan['status']=='proses')?'selected':'' ?>>Proses</option>
-                        <option value="selesai" <?= ($pengaduan['status']=='selesai')?'selected':'' ?>>Selesai</option>
+                        <option value="menunggu" <?= ($pengaduan['status'] == 'menunggu') ? 'selected' : '' ?>>Menunggu</option>
+                        <option value="proses" <?= ($pengaduan['status'] == 'proses') ? 'selected' : '' ?>>Proses</option>
+                        <option value="selesai" <?= ($pengaduan['status'] == 'selesai') ? 'selected' : '' ?>>Selesai</option>
                     </select>
                 </div>
 
@@ -67,3 +69,4 @@
     </div>
 
 </div>
+<?= $this->endSection() ?>

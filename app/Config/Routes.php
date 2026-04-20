@@ -46,3 +46,6 @@ $routes->get('/users/edit/(:num)', 'Users::edit/$1');
 $routes->post('/users/update/(:num)', 'Users::update/$1');
 $routes->get('/pengaduan/kategori/(:num)', 'Pengaduan::perKategori/$1');
 $routes->get('users/admin', 'Users::admin');
+
+$routes->get('/', 'Dashboard::index');
+$routes->get('dashboard', 'Dashboard::index');

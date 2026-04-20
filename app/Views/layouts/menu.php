@@ -1,50 +1,83 @@
-<ul class="nav flex-column mt-3">
-    <li class="nav-item">
-        <a class="nav-link" href="#">
-            <b>SFACARD</b> <i class="bi bi-yelp"></i>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('/') ?>">
-            <i class="bi bi-house"></i> <span>Dashboard</span>
-        </a>
-    </li>
-    
+<div class="container-fluid navbar-custom">
 
-     <?php if(session()->get('role') == 'admin'): ?>
-    <li>
-        <a href="<?= base_url('users') ?>">Data Users</a>
-    </li>
-<?php endif; ?>
+    <div class="d-flex justify-content-between align-items-center flex-wrap">
 
-        <?php if(session()->get('role') == 'admin'): ?>
-    <a href="<?= base_url('pengaduan') ?>">Data Aspirasi</a>
-<?php endif; ?>
+        <!-- KIRI (LOGO + MENU) -->
+        <div class="d-flex align-items-center flex-wrap">
 
-<?php if(session()->get('role') != 'admin'): ?>
-    <a href="<?= base_url('pengaduan/create') ?>">Pengaduan</a>
-<?php endif; ?>
-    </li>
-    
-     <?php $idu = session('id_user'); ?>
-   
- <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('pengaduan/history/') ?>">
-            <i class="bi bi-person-gear"></i> <span>History</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('users/edit/' . $idu) ?>">
-            <i class="bi bi-person-gear"></i> <span>Setting</span>
-        </a>
-    </li>
+            <!-- LOGO -->
+            <span class="logo-text me-3">
+                SFACARD <i class="bi bi-yelp"></i>
+            </span>
 
-    <a href="<?= site_url('/logout') ?>"> Log Out </a>
-</ul>
-<li class="nav-item mt-3">
-    <span class="nav-link disabled">Masuk sebagai: <b><?= session('nama'); ?> (<?= session('role'); ?>)</b></span>
-</li>
+            <!-- MENU -->
+            <ul class="nav">
 
-<center>
-    <img src="<?= base_url('uploads/users/' . session()->get('foto')) ?>" height="80" class="mt-3 rounded-circle" />
-</center>
+                <li class="nav-item">
+                    <a class="nav-link active" href="<?= base_url('/') ?>">
+                        <i class="bi bi-house"></i> Dashboard
+                    </a>
+                </li>
+
+                <?php if (session()->get('role') == 'admin'): ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url('users') ?>">
+                        <i class="bi bi-people"></i> Users
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url('pengaduan') ?>">
+                        <i class="bi bi-clipboard-data"></i> Aspirasi
+                    </a>
+                </li>
+                <?php endif; ?>
+
+                <?php if (session()->get('role') != 'admin'): ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url('pengaduan') ?>">
+                        <i class="bi bi-chat-left-text"></i> Pengaduan
+                    </a>
+                </li>
+                <?php endif; ?>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url('pengaduan/history/') ?>">
+                        <i class="bi bi-clock-history"></i> History
+                    </a>
+                </li>
+
+                <?php $idu = session('id_user'); ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url('users/edit/' . $idu) ?>">
+                        <i class="bi bi-gear"></i> Setting
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-warning" href="<?= site_url('/logout') ?>">
+                        <i class="bi bi-box-arrow-right"></i> Logout
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+        <!-- KANAN (USER INFO) -->
+        <div class="d-flex align-items-center user-box mt-2 mt-md-0">
+
+            <div class="me-2 text-end">
+                <small>Masuk sebagai</small><br>
+                <b><?= session('nama'); ?></b><br>
+                <small>(<?= session('role'); ?>)</small>
+            </div>
+
+            <img src="<?= base_url('uploads/users/' . session()->get('foto')) ?>" 
+                 width="50" height="50" 
+                 class="user-img">
+
+        </div>
+
+    </div>
+
+</div>
