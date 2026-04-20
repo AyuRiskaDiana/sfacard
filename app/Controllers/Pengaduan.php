@@ -17,6 +17,11 @@ class Pengaduan extends BaseController
     public function feedback($id)
     {
         $data['pengaduan'] = $this->pengaduan->find($id);
+
+        // Ambil feedback jika sudah ada
+        $feedbackModel = new \App\Models\FeedbackModel();
+        $data['feedback'] = $feedbackModel->where('id_pengaduan', $id)->first();
+
         return view('pengaduan/feedback', $data);
     }
 
@@ -62,56 +67,96 @@ class Pengaduan extends BaseController
         return view('pengaduan/history', $data);
     }
 
-   public function index()
-{
-    $db = \Config\Database::connect();
+    public function index()
+    {
+        $db = \Config\Database::connect();
 
-    $builder = $db->table('pengaduan');
+        $builder = $db->table('pengaduan');
 
-    $builder->select('pengaduan.*, users.nama, aspirasi.kategori, feedback.isi_feedback');
+        $builder->select('pengaduan.*, users.nama, aspirasi.kategori, feedback.isi_feedback');
 
-    $builder->join('users', 'users.id_user = pengaduan.id_user', 'left');
-    $builder->join('aspirasi', 'aspirasi.id_aspirasi = pengaduan.id_aspirasi', 'left');
-    $builder->join('feedback', 'feedback.id_pengaduan = pengaduan.id_pengaduan', 'left');
+        $builder->join('users', 'users.id_user = pengaduan.id_user', 'left');
+        $builder->join('aspirasi', 'aspirasi.id_aspirasi = pengaduan.id_aspirasi', 'left');
+        $builder->join('feedback', 'feedback.id_pengaduan = pengaduan.id_pengaduan', 'left');
 
-    // 🔥 FIX: pastikan admin lihat semua
-    if (session()->get('role') != 'admin') {
-        $builder->where('pengaduan.id_user', session()->get('id_user'));
+        // 🔥 FIX: pastikan admin lihat semua
+        if (session()->get('role') != 'admin') {
+            $builder->where('pengaduan.id_user', session()->get('id_user'));
+        }
+
+        // ambil input filter
+        $tanggal     = $this->request->getGet('tanggal');
+        $bulan       = $this->request->getGet('bulan');
+        $id_user     = $this->request->getGet('id_user');
+        $id_aspirasi = $this->request->getGet('id_aspirasi');
+
+        // FILTER (AMAN)
+        if (!empty($tanggal)) {
+            $builder->where('pengaduan.tanggal', $tanggal);
+        }
+
+        if (!empty($bulan)) {
+            $builder->where("DATE_FORMAT(pengaduan.tanggal, '%Y-%m') =", $bulan);
+        }
+
+        // 🔥 FIX: hanya admin bisa filter user
+        if (!empty($id_user) && session()->get('role') == 'admin') {
+            $builder->like('users.nama', $id_user);
+        }
+
+        if (!empty($id_aspirasi)) {
+            $builder->where('pengaduan.id_aspirasi', $id_aspirasi);
+        }
+
+        // 🔥 PENTING: group by biar tidak duplikat / hilang
+        $builder->groupBy('pengaduan.id_pengaduan');
+
+        $data['pengaduan'] = $builder->get()->getResultArray();
+
+        $data['aspirasi'] = $db->table('aspirasi')->get()->getResultArray();
+
+        return view('pengaduan/index', $data);
     }
 
-    // ambil input filter
-    $tanggal     = $this->request->getGet('tanggal');
-    $bulan       = $this->request->getGet('bulan');
-    $id_user     = $this->request->getGet('id_user');
-    $id_aspirasi = $this->request->getGet('id_aspirasi');
+    // ================= PRINT =================
+    public function print()
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table('pengaduan');
 
-    // FILTER (AMAN)
-    if (!empty($tanggal)) {
-        $builder->where('pengaduan.tanggal', $tanggal);
+        $builder->select('pengaduan.*, users.nama, aspirasi.kategori, feedback.isi_feedback');
+        $builder->join('users', 'users.id_user = pengaduan.id_user', 'left');
+        $builder->join('aspirasi', 'aspirasi.id_aspirasi = pengaduan.id_aspirasi', 'left');
+        $builder->join('feedback', 'feedback.id_pengaduan = pengaduan.id_pengaduan', 'left');
+
+        // Terapkan filter yang sama seperti di index
+        $tanggal     = $this->request->getGet('tanggal');
+        $bulan       = $this->request->getGet('bulan');
+        $id_user     = $this->request->getGet('id_user');
+        $id_aspirasi = $this->request->getGet('id_aspirasi');
+
+        if (!empty($tanggal)) {
+            $builder->where('pengaduan.tanggal', $tanggal);
+        }
+
+        if (!empty($bulan)) {
+            $builder->where("DATE_FORMAT(pengaduan.tanggal, '%Y-%m') =", $bulan);
+        }
+
+        if (!empty($id_user) && session()->get('role') == 'admin') {
+            $builder->like('users.nama', $id_user);
+        }
+
+        if (!empty($id_aspirasi)) {
+            $builder->where('pengaduan.id_aspirasi', $id_aspirasi);
+        }
+
+        $builder->groupBy('pengaduan.id_pengaduan');
+        $data['pengaduan'] = $builder->get()->getResultArray();
+
+        return view('pengaduan/print', $data);
     }
 
-    if (!empty($bulan)) {
-        $builder->where("DATE_FORMAT(pengaduan.tanggal, '%Y-%m') =", $bulan);
-    }
-
-    // 🔥 FIX: hanya admin bisa filter user
-    if (!empty($id_user) && session()->get('role') == 'admin') {
-        $builder->like('users.nama', $id_user);
-    }
-
-    if (!empty($id_aspirasi)) {
-        $builder->where('pengaduan.id_aspirasi', $id_aspirasi);
-    }
-
-    // 🔥 PENTING: group by biar tidak duplikat / hilang
-    $builder->groupBy('pengaduan.id_pengaduan');
-
-    $data['pengaduan'] = $builder->get()->getResultArray();
-
-    $data['aspirasi'] = $db->table('aspirasi')->get()->getResultArray();
-
-    return view('pengaduan/index', $data);
-}
     // ================= CREATE =================
     public function create()
     {

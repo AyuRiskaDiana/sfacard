@@ -6,18 +6,22 @@ use App\Controllers\BaseController;
 
 class Dashboard extends BaseController
 {
-    
+
     public function index()
     {
-        
+
         $db = \Config\Database::connect();
 
-        // Ambil semua pengaduan
-        $pengaduan = $db->table('pengaduan')->get()->getResultArray();
+        // Ambil semua pengaduan dengan join user
+        $builder = $db->table('pengaduan');
+        $builder->select('pengaduan.*, users.nama');
+        $builder->join('users', 'users.id_user = pengaduan.id_user', 'left');
+        $builder->orderBy('pengaduan.id_pengaduan', 'DESC');
+        $pengaduan = $builder->get()->getResultArray();
 
         // Hitung status
         $diproses = $db->table('pengaduan')
-            ->where('status', 'proses')
+            ->whereIn('status', ['proses', 'diproses'])
             ->countAllResults();
 
         $selesai = $db->table('pengaduan')
@@ -34,6 +38,6 @@ class Dashboard extends BaseController
             'total_user'  => $total_user
         ];
 
-        return view('dashboard/index', $data);
+        return view('layouts/dashboard', $data);
     }
 }

@@ -12,11 +12,11 @@
     .card-custom {
         border-radius: 12px;
         border: none;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     }
 
     .stat-card {
-        background: rgba(255,255,255,0.15);
+        background: rgba(255, 255, 255, 0.15);
         border-radius: 10px;
         padding: 15px;
         color: white;
@@ -34,7 +34,7 @@
     <div class="dashboard-header mb-4">
         <h4>Good morning, <?= session('nama') ?></h4>
 
-        <?php if(session()->get('role') == 'admin'): ?>
+        <?php if (session()->get('role') == 'admin'): ?>
             <p class="small-text">Ringkasan sistem hari ini</p>
         <?php else: ?>
             <p class="small-text">Pantau status pengaduan kamu</p>
@@ -63,13 +63,13 @@
                 </div>
             </div>
 
-            <?php if(session()->get('role') == 'admin'): ?>
-            <div class="col-md-3">
-                <div class="stat-card">
-                    <h6>User</h6>
-                    <h4><?= $total_user ?? 0 ?></h4>
+            <?php if (session()->get('role') == 'admin'): ?>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <h6>User</h6>
+                        <h4><?= $total_user ?? 0 ?></h4>
+                    </div>
                 </div>
-            </div>
             <?php endif; ?>
 
         </div>
@@ -82,7 +82,7 @@
         <div class="col-md-8">
             <div class="card card-custom p-3">
 
-                <?php if(session()->get('role') == 'admin'): ?>
+                <?php if (session()->get('role') == 'admin'): ?>
                     <h5>Data Pengaduan Terbaru</h5>
                 <?php else: ?>
                     <h5>Pengaduan Terakhir Kamu</h5>
@@ -90,30 +90,29 @@
 
                 <table class="table mt-3">
                     <tr>
-                        <?php if(session()->get('role') == 'admin'): ?>
+                        <?php if (session()->get('role') == 'admin'): ?>
                             <th>Nama</th>
                         <?php endif; ?>
                         <th>Judul</th>
                         <th>Status</th>
                     </tr>
 
-                    <?php if(!empty($pengaduan)): ?>
-                        <?php foreach(array_slice($pengaduan,0,5) as $p): ?>
-                        <tr>
-                            <?php if(session()->get('role') == 'admin'): ?>
-                                <td><?= $p['nama'] ?? '-' ?></td>
-                            <?php endif; ?>
+                    <?php if (!empty($pengaduan)): ?>
+                        <?php foreach (array_slice($pengaduan, 0, 5) as $p): ?>
+                            <tr>
+                                <?php if (session()->get('role') == 'admin'): ?>
+                                    <td><?= $p['nama'] ?? '-' ?></td>
+                                <?php endif; ?>
 
-                            <td><?= $p['judul'] ?></td>
+                                <td><?= $p['judul'] ?></td>
 
-                            <td>
-                                <span class="badge 
-                                    <?= $p['status'] == 'selesai' ? 'bg-success' : 
-                                        ($p['status'] == 'diproses' ? 'bg-warning text-dark' : 'bg-secondary') ?>">
-                                    <?= $p['status'] ?>
-                                </span>
-                            </td>
-                        </tr>
+                                <td>
+                                    <span class="badge 
+                                    <?= $p['status'] == 'selesai' ? 'bg-success' : ($p['status'] == 'diproses' ? 'bg-warning text-dark' : 'bg-secondary') ?>">
+                                        <?= $p['status'] ?>
+                                    </span>
+                                </td>
+                            </tr>
                         <?php endforeach; ?>
                     <?php else: ?>
                         <tr>
@@ -129,18 +128,18 @@
         <div class="col-md-4">
 
             <!-- KHUSUS USER -->
-            <?php if(session()->get('role') != 'admin'): ?>
-            <div class="card card-custom p-3 mb-3">
-                <h6>Aksi Cepat</h6>
+            <?php if (session()->get('role') != 'admin'): ?>
+                <div class="card card-custom p-3 mb-3">
+                    <h6>Aksi Cepat</h6>
 
-                <a href="<?= base_url('pengaduan/create') ?>" class="btn btn-primary w-100 mb-2">
-                    <i class="bi bi-plus-circle"></i> Buat Pengaduan
-                </a>
+                    <a href="<?= base_url('pengaduan/create') ?>" class="btn btn-primary w-100 mb-2">
+                        <i class="bi bi-plus-circle"></i> Buat Pengaduan
+                    </a>
 
-                <a href="<?= base_url('pengaduan/history') ?>" class="btn btn-outline-secondary w-100">
-                    <i class="bi bi-clock-history"></i> Lihat History
-                </a>
-            </div>
+                    <a href="<?= base_url('pengaduan/history') ?>" class="btn btn-outline-secondary w-100">
+                        <i class="bi bi-clock-history"></i> Lihat History
+                    </a>
+                </div>
             <?php endif; ?>
 
             <!-- UMUM -->

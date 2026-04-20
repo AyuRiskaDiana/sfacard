@@ -7,7 +7,7 @@
 
         <!-- HEADER -->
         <div class="card-header text-white rounded-top-4"
-             style="background: linear-gradient(135deg,#6a5af9,#3b82f6);">
+            style="background: linear-gradient(135deg,#6a5af9,#3b82f6);">
             <h5 class="mb-0">
                 <i class="bi bi-chat-dots-fill"></i> Feedback Pengaduan
             </h5>
@@ -23,37 +23,75 @@
                 </div>
             </div>
 
-            <!-- FORM -->
-            <form action="<?= base_url('pengaduan/feedback/save') ?>" method="post">
+            <!-- STATUS PENGADUAN -->
+            <div class="mb-4">
+                <label class="form-label fw-semibold">Status</label>
+                <div class="form-control bg-light border-0 shadow-sm">
+                    <?php if (isset($feedback) && !empty($feedback)): ?>
+                        <span class="badge bg-success">
+                            <i class="bi bi-check-circle"></i> Feedback sudah diberikan
+                        </span>
+                    <?php else: ?>
+                        <span class="badge bg-warning text-dark">
+                            <i class="bi bi-clock"></i> Feedback belum diberikan
+                        </span>
+                    <?php endif; ?>
+                </div>
+            </div>
 
-                <input type="hidden" name="id_pengaduan" value="<?= $pengaduan['id_pengaduan'] ?>">
-
-                <!-- TEXTAREA -->
+            <?php if (isset($feedback) && !empty($feedback)): ?>
+                <!-- TAMPILKAN FEEDBACK (READ-ONLY) -->
                 <div class="mb-4">
-                    <label class="form-label fw-semibold">Isi Feedback</label>
-                    <textarea name="isi_feedback" 
-                              class="form-control shadow-sm" 
-                              rows="4"
-                              placeholder="Masukkan feedback..."></textarea>
+                    <label class="form-label fw-semibold">Feedback yang sudah diberikan</label>
+                    <div class="form-control bg-light border-0 shadow-sm" style="min-height: 100px;">
+                        <?= nl2br(htmlspecialchars($feedback['isi_feedback'])) ?>
+                    </div>
+                    <small class="text-muted mt-1 d-block">
+                        <i class="bi bi-calendar"></i> Diberikan pada: <?= date('d-m-Y H:i', strtotime($feedback['tanggal'] ?? $pengaduan['updated_at'])) ?>
+                    </small>
                 </div>
 
-                <!-- BUTTON -->
-                <div class="d-flex justify-content-between">
-
-                    <a href="<?= base_url('pengaduan') ?>" 
-                       class="btn btn-outline-secondary">
+                <!-- BUTTON KEMBALI SAJA -->
+                <div class="d-flex justify-content-start">
+                    <a href="<?= base_url('pengaduan') ?>"
+                        class="btn btn-outline-secondary">
                         <i class="bi bi-arrow-left"></i> Kembali
                     </a>
-
-                    <button type="submit" 
-                            class="btn text-white"
-                            style="background: linear-gradient(135deg,#6a5af9,#3b82f6);">
-                        <i class="bi bi-send-fill"></i> Kirim Feedback
-                    </button>
-
                 </div>
 
-            </form>
+            <?php else: ?>
+                <!-- FORM FEEDBACK -->
+                <form action="<?= base_url('pengaduan/feedback/save') ?>" method="post">
+
+                    <input type="hidden" name="id_pengaduan" value="<?= $pengaduan['id_pengaduan'] ?>">
+
+                    <!-- TEXTAREA -->
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold">Isi Feedback</label>
+                        <textarea name="isi_feedback"
+                            class="form-control shadow-sm"
+                            rows="4"
+                            placeholder="Masukkan feedback..."></textarea>
+                    </div>
+
+                    <!-- BUTTON -->
+                    <div class="d-flex justify-content-between">
+
+                        <a href="<?= base_url('pengaduan') ?>"
+                            class="btn btn-outline-secondary">
+                            <i class="bi bi-arrow-left"></i> Kembali
+                        </a>
+
+                        <button type="submit"
+                            class="btn text-white"
+                            style="background: linear-gradient(135deg,#6a5af9,#3b82f6);">
+                            <i class="bi bi-send-fill"></i> Kirim Feedback
+                        </button>
+
+                    </div>
+
+                </form>
+            <?php endif; ?>
 
         </div>
     </div>
