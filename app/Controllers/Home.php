@@ -32,7 +32,8 @@ class Home extends BaseController
             'pengaduan'   => $pengaduan,
             'diproses'    => $diproses,
             'selesai'     => $selesai,
-            'total_user'  => $total_user
+            'total_user'  => $total_user,
+            'notifikasi'  => $this->notifikasi
         ];
 
         return view('layouts/dashboard', $data);

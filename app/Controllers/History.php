@@ -32,6 +32,7 @@ class Pengaduan extends BaseController
         }
 
         $data['pengaduan'] = $builder->get()->getResultArray();
+        $data['notifikasi'] = $this->notifikasi;
 
         return view('pengaduan/history', $data);
     }

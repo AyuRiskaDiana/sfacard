@@ -21,6 +21,7 @@ class Pengaduan extends BaseController
         // Ambil feedback jika sudah ada
         $feedbackModel = new \App\Models\FeedbackModel();
         $data['feedback'] = $feedbackModel->where('id_pengaduan', $id)->first();
+        $data['notifikasi'] = $this->notifikasi;
 
         return view('pengaduan/feedback', $data);
     }
@@ -63,6 +64,7 @@ class Pengaduan extends BaseController
         $builder->orderBy('pengaduan.id_pengaduan', 'DESC');
 
         $data['pengaduan'] = $builder->get()->getResultArray();
+        $data['notifikasi'] = $this->notifikasi;
 
         return view('pengaduan/history', $data);
     }
@@ -114,6 +116,7 @@ class Pengaduan extends BaseController
         $data['pengaduan'] = $builder->get()->getResultArray();
 
         $data['aspirasi'] = $db->table('aspirasi')->get()->getResultArray();
+        $data['notifikasi'] = $this->notifikasi;
 
         return view('pengaduan/index', $data);
     }
@@ -162,6 +165,7 @@ class Pengaduan extends BaseController
     {
         $db = \Config\Database::connect();
         $data['aspirasi'] = $db->table('aspirasi')->get()->getResultArray();
+        $data['notifikasi'] = $this->notifikasi;
 
         return view('pengaduan/create', $data);
     }
@@ -203,7 +207,7 @@ class Pengaduan extends BaseController
 
         session()->setFlashdata('success', 'Aspirasi berhasil dikirim!');
 
-        return redirect()->to('/pengaduan/create');
+        return redirect()->to('/pengaduan');
     }
 
     // ================= EDIT =================
@@ -214,6 +218,7 @@ class Pengaduan extends BaseController
         }
 
         $data['pengaduan'] = $this->pengaduan->find($id);
+        $data['notifikasi'] = $this->notifikasi;
         return view('pengaduan/edit', $data);
     }
 

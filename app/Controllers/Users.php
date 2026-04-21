@@ -15,7 +15,8 @@ class Users extends BaseController
 
     public function create()
     {
-        return view('users/create');
+        $data['notifikasi'] = $this->notifikasi;
+        return view('users/create', $data);
     }
 
     public function store()
@@ -71,6 +72,7 @@ class Users extends BaseController
 
         $data['users'] = $builder->paginate(10);
         $data['pager'] = $this->users->pager;
+        $data['notifikasi'] = $this->notifikasi;
 
         return view('users/index', $data);
     }
@@ -88,6 +90,7 @@ class Users extends BaseController
     }
 
     $data['user'] = $user;
+    $data['notifikasi'] = $this->notifikasi;
 
     return view('users/edit', $data);
 }
@@ -137,7 +140,8 @@ public function admin()
         return redirect()->to('/dashboard');
     }
 
-    return view('users/admin');
+    $data['notifikasi'] = $this->notifikasi;
+    return view('users/admin', $data);
 }
     public function delete($id)
     {

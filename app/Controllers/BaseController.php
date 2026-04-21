@@ -26,6 +26,7 @@ abstract class BaseController extends Controller
      */
 
     // protected $session;
+    protected $notifikasi = [];
 
     /**
      * @return void
@@ -41,5 +42,22 @@ abstract class BaseController extends Controller
 
         // Preload any models, libraries, etc, here.
         // $this->session = service('session');
+
+        // Fetch notifikasi untuk admin
+        if (session()->get('role') == 'admin') {
+            $notifikasiModel = new \App\Models\NotifikasiModel();
+            $this->notifikasi = $notifikasiModel->where('id_user', session()->get('id_user'))
+                                                 ->orderBy('id_notifikasi', 'DESC')
+                                                 ->findAll();
+        }
+    }
+
+    /**
+     * Helper untuk render view dengan notifikasi otomatis
+     */
+    protected function renderView($view, $data = [])
+    {
+        $data['notifikasi'] = $this->notifikasi;
+        return view($view, $data);
     }
 }

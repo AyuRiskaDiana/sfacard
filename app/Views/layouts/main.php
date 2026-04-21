@@ -6,12 +6,14 @@
 
     <link href="<?= base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
     <link href="<?= base_url('assets/bootstrap-icons-1.13.1/bootstrap-icons.css') ?>" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
         body {
             display: flex;
             min-height: 100vh;
             background: #f5f6fa;
+            margin: 0;
         }
 
         /* SIDEBAR */
@@ -41,6 +43,7 @@
         .content {
             flex: 1;
             padding: 20px;
+            margin-top: 0; /* ✅ FIX JARAK */
         }
 
         .logo {
@@ -126,6 +129,17 @@
 <div class="content">
     <?= $this->renderSection('content') ?>
 </div>
+
+<script>
+    <?php if(session()->getFlashdata('success')): ?>
+        Swal.fire({
+            title: 'Sukses!',
+            text: '<?= addslashes(session()->getFlashdata('success')) ?>',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
+    <?php endif; ?>
+</script>
 
 </body>
 </html>
