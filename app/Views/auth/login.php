@@ -87,9 +87,12 @@
                 <div class="text-center mt-3">
                     <small>Belum punya akun?</small><br>
                     <a href="<?= base_url('users/create') ?>">Register Now</a>
+                    <a href="<?= base_url('restore') ?>" class="btn btn-outline-danger btn-sm">
+                        <i class="bi bi-database"></i> Restore DB
+                        </a>
                 </div>
             </div>
-
+                    
             <!-- KANAN (GAMBAR) -->
             <div class="col-md-6 right-panel">
                 <img src="<?= base_url('uploads/login/login.png') ?>" alt="login">

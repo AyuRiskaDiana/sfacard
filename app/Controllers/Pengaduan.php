@@ -13,15 +13,30 @@ class Pengaduan extends BaseController
         $this->pengaduan = new PengaduanModel();
     }
 
+    // ================= SAVE RATING =================
+    public function saveRating()
+    {
+        $db = \Config\Database::connect();
+
+        $db->table('rating')->insert([
+            'id_pengaduan' => $this->request->getPost('id_pengaduan'),
+            'id_user'      => session()->get('id_user'),
+            'rating'       => $this->request->getPost('rating'),
+            'komentar'     => $this->request->getPost('komentar') ?? null,
+        ]);
+
+        session()->setFlashdata('success', 'Terima kasih atas penilaian Anda');
+
+        return redirect()->to('/pengaduan/history');
+    }
+
     // ================= FEEDBACK =================
     public function feedback($id)
     {
         $data['pengaduan'] = $this->pengaduan->find($id);
 
-        // Ambil feedback jika sudah ada
         $feedbackModel = new \App\Models\FeedbackModel();
         $data['feedback'] = $feedbackModel->where('id_pengaduan', $id)->first();
-        $data['notifikasi'] = $this->notifikasi;
 
         return view('pengaduan/feedback', $data);
     }
@@ -35,7 +50,7 @@ class Pengaduan extends BaseController
             'isi_feedback' => $this->request->getPost('isi_feedback')
         ]);
 
-        // otomatis ubah status
+        // ubah status otomatis
         $this->pengaduan->update(
             $this->request->getPost('id_pengaduan'),
             ['status' => 'selesai']
@@ -44,95 +59,96 @@ class Pengaduan extends BaseController
         return redirect()->to('/pengaduan');
     }
 
-    // ================= HISTORY =================
-    public function history()
-    {
-        $db = \Config\Database::connect();
-        $builder = $db->table('pengaduan');
-
-        $builder->select('pengaduan.*, feedback.isi_feedback, users.nama, aspirasi.kategori');
-        $builder->join('feedback', 'feedback.id_pengaduan = pengaduan.id_pengaduan', 'left');
-        $builder->join('users', 'users.id_user = pengaduan.id_user', 'left');
-        $builder->join('aspirasi', 'aspirasi.id_aspirasi = pengaduan.id_aspirasi', 'left');
-
-        // FILTER ROLE
-        if (session()->get('role') != 'admin') {
-            $builder->where('pengaduan.id_user', session()->get('id_user'));
-        }
-
-        // URUTKAN TERBARU
-        $builder->orderBy('pengaduan.id_pengaduan', 'DESC');
-
-        $data['pengaduan'] = $builder->get()->getResultArray();
-        $data['notifikasi'] = $this->notifikasi;
-
-        return view('pengaduan/history', $data);
-    }
-
-    public function index()
-    {
-        $db = \Config\Database::connect();
-
-        $builder = $db->table('pengaduan');
-
-        $builder->select('pengaduan.*, users.nama, aspirasi.kategori, feedback.isi_feedback');
-
-        $builder->join('users', 'users.id_user = pengaduan.id_user', 'left');
-        $builder->join('aspirasi', 'aspirasi.id_aspirasi = pengaduan.id_aspirasi', 'left');
-        $builder->join('feedback', 'feedback.id_pengaduan = pengaduan.id_pengaduan', 'left');
-
-        // 🔥 FIX: pastikan admin lihat semua
-        if (session()->get('role') != 'admin') {
-            $builder->where('pengaduan.id_user', session()->get('id_user'));
-        }
-
-        // ambil input filter
-        $tanggal     = $this->request->getGet('tanggal');
-        $bulan       = $this->request->getGet('bulan');
-        $id_user     = $this->request->getGet('id_user');
-        $id_aspirasi = $this->request->getGet('id_aspirasi');
-
-        // FILTER (AMAN)
-        if (!empty($tanggal)) {
-            $builder->where('pengaduan.tanggal', $tanggal);
-        }
-
-        if (!empty($bulan)) {
-            $builder->where("DATE_FORMAT(pengaduan.tanggal, '%Y-%m') =", $bulan);
-        }
-
-        // 🔥 FIX: hanya admin bisa filter user
-        if (!empty($id_user) && session()->get('role') == 'admin') {
-            $builder->like('users.nama', $id_user);
-        }
-
-        if (!empty($id_aspirasi)) {
-            $builder->where('pengaduan.id_aspirasi', $id_aspirasi);
-        }
-
-        // 🔥 PENTING: group by biar tidak duplikat / hilang
-        $builder->groupBy('pengaduan.id_pengaduan');
-
-        $data['pengaduan'] = $builder->get()->getResultArray();
-
-        $data['aspirasi'] = $db->table('aspirasi')->get()->getResultArray();
-        $data['notifikasi'] = $this->notifikasi;
-
-        return view('pengaduan/index', $data);
-    }
-
     // ================= PRINT =================
     public function print()
     {
         $db = \Config\Database::connect();
         $builder = $db->table('pengaduan');
 
-        $builder->select('pengaduan.*, users.nama, aspirasi.kategori, feedback.isi_feedback');
+        $builder->select('pengaduan.*, 
+                          feedback.isi_feedback, 
+                          users.nama, 
+                          aspirasi.kategori');
+
+        $builder->join('feedback', 'feedback.id_pengaduan = pengaduan.id_pengaduan', 'left');
+        $builder->join('users', 'users.id_user = pengaduan.id_user', 'left');
+        $builder->join('aspirasi', 'aspirasi.id_aspirasi = pengaduan.id_aspirasi', 'left');
+
+        if (session()->get('role') != 'admin') {
+            $builder->where('pengaduan.id_user', session()->get('id_user'));
+        }
+
+        $builder->orderBy('pengaduan.id_pengaduan', 'DESC');
+
+        $data['pengaduan'] = $builder->get()->getResultArray();
+
+        return view('pengaduan/print', $data);
+    }
+
+    // ================= HISTORY =================
+   public function history()
+{
+    $db = \Config\Database::connect();
+    $builder = $db->table('pengaduan');
+
+    $builder->select('pengaduan.*, users.nama, aspirasi.kategori, feedback.isi_feedback, rating.rating, rating.komentar');
+    $builder->join('users', 'users.id_user = pengaduan.id_user', 'left');
+    $builder->join('aspirasi', 'aspirasi.id_aspirasi = pengaduan.id_aspirasi', 'left');
+    $builder->join('feedback', 'feedback.id_pengaduan = pengaduan.id_pengaduan', 'left');
+    $builder->join('rating', 'rating.id_pengaduan = pengaduan.id_pengaduan', 'left');
+
+    if (session()->get('role') != 'admin') {
+        $builder->where('pengaduan.id_user', session()->get('id_user'));
+    }
+
+    $builder->orderBy('pengaduan.id_pengaduan', 'DESC');
+
+    // ✅ AMBIL DATA PENGADUAN
+    $pengaduan = $builder->get()->getResultArray();
+
+    // ✅ AMBIL DATA PROGRES
+    $allProgres = $db->table('progres_pengaduan')
+        ->orderBy('tanggal', 'ASC')
+        ->get()->getResultArray();
+
+    // ✅ KELOMPOKKAN PROGRES
+    $progres = [];
+    foreach ($allProgres as $pr) {
+        $progres[$pr['id_pengaduan']][] = $pr;
+    }
+
+    // ✅ KIRIM KE VIEW
+    return view('pengaduan/history', [
+        'pengaduan' => $pengaduan,
+        'progres'   => $progres,
+        'notifikasi'=> []
+    ]);
+}
+
+    // ================= INDEX =================
+    public function index()
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table('pengaduan');
+
+        $builder->select('pengaduan.*, 
+                          users.nama, 
+                          aspirasi.kategori, 
+                          feedback.isi_feedback,
+                          rating.rating,
+                          rating.komentar');
+
         $builder->join('users', 'users.id_user = pengaduan.id_user', 'left');
         $builder->join('aspirasi', 'aspirasi.id_aspirasi = pengaduan.id_aspirasi', 'left');
         $builder->join('feedback', 'feedback.id_pengaduan = pengaduan.id_pengaduan', 'left');
+        $builder->join('rating', 'rating.id_pengaduan = pengaduan.id_pengaduan', 'left');
 
-        // Terapkan filter yang sama seperti di index
+        // role filter
+        if (session()->get('role') != 'admin') {
+            $builder->where('pengaduan.id_user', session()->get('id_user'));
+        }
+
+        // filter
         $tanggal     = $this->request->getGet('tanggal');
         $bulan       = $this->request->getGet('bulan');
         $id_user     = $this->request->getGet('id_user');
@@ -154,10 +170,13 @@ class Pengaduan extends BaseController
             $builder->where('pengaduan.id_aspirasi', $id_aspirasi);
         }
 
+        // penting supaya tidak duplikat
         $builder->groupBy('pengaduan.id_pengaduan');
-        $data['pengaduan'] = $builder->get()->getResultArray();
 
-        return view('pengaduan/print', $data);
+        $data['pengaduan'] = $builder->get()->getResultArray();
+        $data['aspirasi'] = $db->table('aspirasi')->get()->getResultArray();
+
+        return view('pengaduan/index', $data);
     }
 
     // ================= CREATE =================
@@ -165,7 +184,6 @@ class Pengaduan extends BaseController
     {
         $db = \Config\Database::connect();
         $data['aspirasi'] = $db->table('aspirasi')->get()->getResultArray();
-        $data['notifikasi'] = $this->notifikasi;
 
         return view('pengaduan/create', $data);
     }
@@ -175,7 +193,7 @@ class Pengaduan extends BaseController
     {
         $db = \Config\Database::connect();
 
-        // NOTIF KE ADMIN
+        // notif ke admin
         $admin = $db->table('users')->where('role', 'admin')->get()->getResultArray();
 
         foreach ($admin as $a) {
@@ -218,30 +236,17 @@ class Pengaduan extends BaseController
         }
 
         $data['pengaduan'] = $this->pengaduan->find($id);
-        $data['notifikasi'] = $this->notifikasi;
+
         return view('pengaduan/edit', $data);
     }
 
     // ================= UPDATE =================
     public function update($id)
     {
+        
         if (session()->get('role') != 'admin') {
             return redirect()->to('/dashboard');
         }
-
-        $db = \Config\Database::connect();
-
-        // ambil user
-        $pengaduan = $db->table('pengaduan')
-            ->where('id_pengaduan', $id)
-            ->get()
-            ->getRowArray();
-
-        // NOTIF KE USER
-        $db->table('notifikasi')->insert([
-            'id_user' => $pengaduan['id_user'],
-            'pesan'   => 'Status pengaduan anda telah diperbarui',
-        ]);
 
         $file = $this->request->getFile('foto');
 

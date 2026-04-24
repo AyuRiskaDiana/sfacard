@@ -34,11 +34,10 @@
         </div>
     <?php endif; ?>
 
-    <!-- FILTER (ADMIN) -->
+    <!-- FILTER -->
     <?php if (session()->get('role') == 'admin'): ?>
         <div class="card mb-3 shadow-sm">
             <div class="card-body">
-
                 <form method="get" action="<?= base_url('pengaduan') ?>" class="row g-2">
 
                     <div class="col-md-2">
@@ -72,7 +71,6 @@
                     </div>
 
                 </form>
-
             </div>
         </div>
     <?php endif; ?>
@@ -94,9 +92,11 @@
                             <th>Foto</th>
                             <th>Status</th>
                             <th>Feedback</th>
+                            <th>Rating</th>
+                            <th>Komentar</th>
 
                             <?php if (session()->get('role') == 'admin'): ?>
-                                <th width="200">Aksi</th>
+                                <th width="220">Aksi</th>
                             <?php endif; ?>
                         </tr>
                     </thead>
@@ -124,44 +124,51 @@
 
                                     <td>
                                         <?php
-                                        $statusClass = match ($p['status']) {
-                                            'selesai' => 'bg-success',
-                                            'diproses' => 'bg-info',
-                                            default => 'bg-warning text-dark'
-                                        };
+                                        $statusClass = 'bg-warning text-dark';
+                                        if ($p['status'] == 'selesai') {
+                                            $statusClass = 'bg-success';
+                                        } elseif ($p['status'] == 'diproses') {
+                                            $statusClass = 'bg-info';
+                                        }
                                         ?>
                                         <span class="badge <?= $statusClass ?>">
                                             <?= $p['status'] ?>
                                         </span>
                                     </td>
 
-                                    <td>
-                                        <?= $p['isi_feedback'] ?? 'Belum ada feedback' ?>
-                                    </td>
+                                    <td><?= $p['isi_feedback'] ?? 'Belum ada feedback' ?></td>
+
+                                    <td><?= !empty($p['rating']) ? $p['rating'] . ' ⭐' : '-' ?></td>
+
+                                    <td><?= !empty($p['komentar']) ? $p['komentar'] : '-' ?></td>
 
                                     <?php if (session()->get('role') == 'admin'): ?>
                                         <td>
                                             <div class="d-flex justify-content-center gap-2">
 
+                                                <!-- PROGRES -->
+                                                <a href="<?= base_url('progres/create/' . $p['id_pengaduan']) ?>"
+                                                    class="btn btn-primary btn-sm">
+                                                    <i class="bi bi-plus"></i>
+                                                </a>
+
                                                 <!-- EDIT -->
                                                 <a href="<?= base_url('pengaduan/edit/' . $p['id_pengaduan']) ?>"
-                                                    class="btn btn-outline-warning border-2"
-                                                    style="padding:10px;">
-                                                    <i class="bi bi-pencil-square" style="font-size:20px;"></i>
+                                                    class="btn btn-outline-warning border-2">
+                                                    <i class="bi bi-pencil-square"></i>
                                                 </a>
 
                                                 <!-- HAPUS -->
                                                 <a href="<?= base_url('pengaduan/delete/' . $p['id_pengaduan']) ?>"
                                                     class="btn btn-outline-danger border-2"
-                                                    style="padding:10px;"
                                                     onclick="return confirm('Yakin hapus data?')">
-                                                    <i class="bi bi-trash-fill" style="font-size:20px;"></i>
+                                                    <i class="bi bi-trash-fill"></i>
                                                 </a>
 
                                                 <!-- FEEDBACK -->
                                                 <a href="<?= base_url('pengaduan/feedback/' . $p['id_pengaduan']) ?>"
                                                     class="btn btn-info text-white">
-                                                    <i class="bi bi-chat-left-text"></i> Feedback
+                                                    <i class="bi bi-chat-left-text"></i>
                                                 </a>
 
                                             </div>
@@ -172,7 +179,7 @@
                             <?php endforeach; ?>
                         <?php else: ?>
                             <tr>
-                                <td colspan="9" class="text-muted">
+                                <td colspan="10" class="text-muted">
                                     <i class="bi bi-info-circle"></i> Belum ada data
                                 </td>
                             </tr>

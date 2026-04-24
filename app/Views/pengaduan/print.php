@@ -25,6 +25,16 @@
     }
 </style>
 
+<!-- TOMBOL PRINT (Luar print-area, tidak muncul saat print) -->
+<div class="no-print text-center mt-4 mb-3">
+    <button onclick="window.print()" class="btn btn-primary">
+        <i class="bi bi-printer"></i> Print
+    </button>
+    <a href="<?= base_url('pengaduan') ?>" class="btn btn-secondary">
+        <i class="bi bi-arrow-left"></i> Kembali
+    </a>
+</div>
+
 <div class="print-area p-4">
 
     <!-- HEADER PRINT -->
@@ -72,16 +82,6 @@
         </tbody>
 
     </table>
-
-    <!-- TOMBOL PRINT (Hanya muncul di layar, tidak saat print) -->
-    <div class="no-print text-center mt-4">
-        <button onclick="window.print()" class="btn btn-primary">
-            <i class="bi bi-printer"></i> Print
-        </button>
-        <a href="<?= base_url('pengaduan') ?>" class="btn btn-secondary">
-            <i class="bi bi-arrow-left"></i> Kembali
-        </a>
-    </div>
 
 </div>
 

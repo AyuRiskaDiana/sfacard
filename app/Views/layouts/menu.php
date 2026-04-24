@@ -43,7 +43,7 @@
 
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('pengaduan/history/') ?>">
-                        <i class="bi bi-clock-history"></i> History
+                        <h4><i class="bi bi-bar-chart-line"></i> History Pengaduan</h4>
                     </a>
                 </li>
 
@@ -54,6 +54,12 @@
                     </a>
                 </li>
 
+                <?php if (session()->get('role') == 'admin') : ?>
+                    <li class="nav-item">
+                        <a href="<?= base_url('/backup') ?>" class="btn btn-success">Backup Database</a>
+                    </li>
+                <?php endif; ?>
+                
                 <li class="nav-item">
                     <a class="nav-link text-warning" href="<?= site_url('/logout') ?>">
                         <i class="bi bi-box-arrow-right"></i> Logout

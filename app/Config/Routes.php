@@ -50,3 +50,18 @@ $routes->get('users/admin', 'Users::admin');
 
 $routes->get('/', 'Dashboard::index');
 $routes->get('dashboard', 'Dashboard::index');
+$routes->get('/backup', 'Backup::index', $admin);
+
+$routes->get('/restore', 'Restore::index');
+$routes->post('/restore/auth', 'Restore::auth');
+$routes->get('/restore/form', 'Restore::form');
+$routes->post('/restore/process', 'Restore::process');
+
+$routes->post('rating/save', 'Rating::save');
+$routes->get('rating/(:num)', 'Rating::index/$1');
+$routes->post('pengaduan/saveRating', 'Pengaduan::saveRating');
+
+$routes->get('/progres/create/(:num)', 'Progres::create/$1');
+$routes->post('/progres/store', 'Progres::store');
+
+$routes->get('dashboard/readNotif/(:num)', 'Dashboard::readNotif/$1');

@@ -106,6 +106,14 @@
             </a>
         </li>
 
+        <?php if (session()->get('role') == 'admin'): ?>
+        <li class="nav-item">
+            <a class="nav-link" href="<?= base_url('/backup') ?>">
+                <i class="bi bi-database"></i> Backup DB
+            </a>
+        </li>
+        <?php endif; ?>
+
         <li class="nav-item mt-3">
             <a class="nav-link text-danger" href="<?= site_url('/logout') ?>">
                 <i class="bi bi-box-arrow-right"></i> Logout

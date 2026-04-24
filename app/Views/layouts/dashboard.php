@@ -39,10 +39,15 @@
         border-radius: 6px;
         font-size: 13px;
         margin-bottom: 8px;
+        transition: 0.2s;
+    }
+
+    .notification-item-card:hover {
+        background: #dbeafe;
+        transform: translateX(3px);
     }
 </style>
 
-<!-- 🔥 FIX DI SINI -->
 <div class="container-fluid mt-3 px-3">
 
     <!-- HEADER -->
@@ -90,63 +95,41 @@
         </div>
     </div>
 
+    <!-- GRAFIK -->
+    <div class="card card-custom p-3 mb-4">
+        <h5>Grafik Pengaduan</h5>
+        <canvas id="grafikPengaduan" height="100"></canvas>
+    </div>
+
     <div class="row">
 
         <!-- LEFT -->
         <div class="col-md-8">
             <div class="card card-custom p-3">
 
-                <h5>
-                    <?= session()->get('role') == 'admin'
-                        ? 'Data Pengaduan Terbaru'
-                        : 'Pengaduan Terakhir Kamu' ?>
-                </h5>
+                <h5>Data Pengaduan Terbaru</h5>
 
                 <table class="table mt-3">
                     <thead>
                         <tr>
-                            <?php if (session()->get('role') == 'admin'): ?>
-                                <th>Nama</th>
-                            <?php endif; ?>
                             <th>Judul</th>
                             <th>Status</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                    <?php if (!empty($pengaduan)): ?>
-                        <?php foreach (array_slice($pengaduan, 0, 5) as $p): ?>
+                    <?php foreach (array_slice($pengaduan, 0, 5) as $p): ?>
                         <tr>
-
-                            <?php if (session()->get('role') == 'admin'): ?>
-                                <td><?= $p['nama'] ?? '-' ?></td>
-                            <?php endif; ?>
-
                             <td><?= $p['judul'] ?></td>
-
                             <td>
-                                <?php
-                                $badge = 'bg-secondary';
-                                if ($p['status'] == 'selesai') {
-                                    $badge = 'bg-success';
-                                } elseif ($p['status'] == 'diproses') {
-                                    $badge = 'bg-warning text-dark';
-                                }
-                                ?>
-                                <span class="badge <?= $badge ?>">
+                                <span class="badge 
+                                    <?= $p['status']=='selesai' ? 'bg-success' : 
+                                       ($p['status']=='diproses' ? 'bg-warning text-dark' : 'bg-secondary') ?>">
                                     <?= $p['status'] ?>
                                 </span>
                             </td>
-
                         </tr>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <tr>
-                            <td colspan="3" class="text-center text-muted">
-                                Belum ada data
-                            </td>
-                        </tr>
-                    <?php endif; ?>
+                    <?php endforeach; ?>
                     </tbody>
 
                 </table>
@@ -156,7 +139,8 @@
         <!-- RIGHT -->
         <div class="col-md-4">
 
-            <?php if (session()->get('role') == 'admin' && !empty($notifikasi)): ?>
+            <!-- NOTIF -->
+            <?php if (!empty($notifikasi)): ?>
             <div class="card card-custom p-3 mb-3">
                 <h6>
                     <i class="bi bi-bell-fill"></i> Notifikasi
@@ -165,49 +149,58 @@
 
                 <div class="notification-list mt-2">
                     <?php foreach ($notifikasi as $n): ?>
-                        <div class="notification-item-card">
-                            <i class="bi bi-exclamation-circle"></i>
-                            <?= $n['pesan'] ?>
-                        </div>
+                        <a href="<?= base_url('dashboard/readNotif/' . $n['id_notifikasi']) ?>" 
+                           style="text-decoration:none; color:inherit;">
+
+                            <div class="notification-item-card">
+                                <i class="bi bi-exclamation-circle"></i>
+                                <?= $n['pesan'] ?>
+                            </div>
+
+                        </a>
                     <?php endforeach; ?>
                 </div>
             </div>
             <?php endif; ?>
-
-            <?php if (session()->get('role') != 'admin'): ?>
-            <div class="card card-custom p-3 mb-3">
-                <h6>Aksi Cepat</h6>
-
-                <a href="<?= base_url('pengaduan/create') ?>" class="btn btn-primary w-100 mb-2">
-                    <i class="bi bi-plus-circle"></i> Buat Pengaduan
-                </a>
-
-                <a href="<?= base_url('pengaduan/history') ?>" class="btn btn-outline-secondary w-100">
-                    <i class="bi bi-clock-history"></i> History
-                </a>
-            </div>
-            <?php endif; ?>
-
-            <div class="card card-custom p-3 mb-3">
-                <h6>Aktivitas</h6>
-                <ul class="list-unstyled mt-2 mb-0">
-                    <li>📌 Pengaduan dikirim</li>
-                    <li>📌 Diproses admin</li>
-                    <li>📌 Status diperbarui</li>
-                </ul>
-            </div>
-
-            <div class="card card-custom p-3">
-                <h6>Info</h6>
-                <p class="small-text mb-0">
-                    Sistem pengaduan membantu monitoring laporan secara real-time.
-                </p>
-            </div>
 
         </div>
 
     </div>
 
 </div>
+
+<!-- ✅ OFFLINE CHART -->
+<script src="<?= base_url('assets/js/chart.js') ?>"></script>
+
+<script>
+const ctx = document.getElementById('grafikPengaduan');
+
+new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: <?= json_encode($tanggal ?? []) ?>,
+        datasets: [
+            {
+                label: 'Menunggu',
+                data: <?= json_encode($menunggu ?? []) ?>,
+                borderColor: '#f59e0b',
+                tension: 0.3
+            },
+            {
+                label: 'Diproses',
+                data: <?= json_encode($diprosesArr ?? []) ?>,
+                borderColor: '#3b82f6',
+                tension: 0.3
+            },
+            {
+                label: 'Selesai',
+                data: <?= json_encode($selesaiArr ?? []) ?>,
+                borderColor: '#10b981',
+                tension: 0.3
+            }
+        ]
+    }
+});
+</script>
 
 <?= $this->endSection() ?>

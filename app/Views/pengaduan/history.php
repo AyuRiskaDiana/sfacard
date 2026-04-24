@@ -1,139 +1,190 @@
 <?= $this->extend('layouts/main') ?>
 <?= $this->section('content') ?>
 
-<div class="container mt-4">
+<style>
+   .history-header {
+    background: linear-gradient(135deg, #6a5af9, #3b82f6);
+    color: white;
+    border-radius: 15px;
+    padding: 25px;
+    position: relative;
+    overflow: hidden;
+}
 
-    <div class="card shadow border-0 rounded-4">
+/* efek halus biar gak bentrok */
+.history-header::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 200px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    transform: translate(50%, -50%);
+}
 
-        <!-- HEADER -->
-        <div class="card-header text-white rounded-top-4"
-             style="background: linear-gradient(135deg,#6a5af9,#3b82f6);">
-            <h5 class="mb-0">
-                <i class="bi bi-clipboard-data"></i> Status Laporan Aspirasi
-            </h5>
-        </div>
+/* judul */
+.history-header h4 {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
 
-        <div class="card-body">
+/* deskripsi */
+.history-header p {
+    color: rgba(255,255,255,0.85); /* 🔥 bukan abu-abu lagi */
+    font-size: 13px;
+    margin-bottom: 0;
+}
+</style>
 
-            <!-- ALERT -->
-            <?php if (session()->getFlashdata('success')): ?>
-                <div class="alert alert-success shadow-sm">
-                    <i class="bi bi-check-circle"></i>
-                    <?= session()->getFlashdata('success') ?>
-                </div>
-            <?php endif; ?>
+<div class="container-fluid mt-3 px-3">
 
-            <!-- TABLE -->
-            <div class="table-responsive">
-                <table class="table table-hover align-middle text-center mb-0">
-
-                    <thead style="background:#eef2ff;">
-                        <tr>
-                            <th>Nama</th>
-                            <th>Tanggal</th>
-                            <th>Judul</th>
-                            <th>Lokasi</th>
-                            <th>Kategori</th>
-                            <th>Foto</th>
-                            <th>Status</th>
-                            <th>Feedback</th>
-
-                            <?php if (session()->get('role') == 'admin') : ?>
-                                <th>Aksi</th>
-                            <?php endif; ?>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <?php foreach ($pengaduan as $p): ?>
-                            <tr>
-
-                                <td class="fw-semibold"><?= $p['nama'] ?? '-' ?></td>
-                                <td><?= $p['tanggal'] ?></td>
-                                <td><?= $p['judul'] ?></td>
-                                <td><?= $p['lokasi'] ?></td>
-
-                                <td>
-                                    <span class="badge bg-light text-dark border">
-                                        <?= $p['kategori'] ?? '-' ?>
-                                    </span>
-                                </td>
-
-                                <!-- FOTO -->
-                                <td>
-                                    <?php if (!empty($p['foto'])): ?>
-                                        <img src="<?= base_url('uploads/' . $p['foto']) ?>" 
-                                             width="60" height="60"
-                                             class="rounded shadow-sm">
-                                    <?php else: ?>
-                                        <span class="text-muted">-</span>
-                                    <?php endif; ?>
-                                </td>
-
-                                <!-- STATUS -->
-                                <td>
-                                    <span class="badge 
-                                        <?= $p['status'] == 'selesai' ? 'bg-success' : 
-                                            ($p['status'] == 'diproses' ? 'bg-warning text-dark' : 'bg-secondary') ?>">
-                                        <?= ucfirst($p['status']) ?>
-                                    </span>
-                                </td>
-
-                                <!-- FEEDBACK -->
-                                <td>
-                                    <?= $p['isi_feedback'] ?? '<span class="text-muted">Belum ada</span>' ?>
-                                </td>
-
-                                <!-- AKSI -->
-                                <?php if (session()->get('role') == 'admin'): ?>
-                                <td>
-                                    <div class="d-flex justify-content-center gap-2">
-
-                                        <!-- EDIT -->
-                                        <a href="<?= base_url('pengaduan/edit/' . $p['id_pengaduan']) ?>" 
-                                           class="btn btn-warning text-white px-3"
-                                           title="Edit">
-                                            <i class="bi bi-pencil-fill"></i>
-                                        </a>
-
-                                        <!-- HAPUS -->
-                                        <a href="<?= base_url('pengaduan/delete/' . $p['id_pengaduan']) ?>" 
-                                           class="btn btn-danger px-3"
-                                           onclick="return confirm('Yakin hapus data?')"
-                                           title="Hapus">
-                                            <i class="bi bi-trash-fill"></i>
-                                        </a>
-
-                                        <!-- FEEDBACK -->
-                                        <a href="<?= base_url('pengaduan/feedback/' . $p['id_pengaduan']) ?>" 
-                                           class="btn text-white px-3"
-                                           style="background: linear-gradient(135deg,#6a5af9,#3b82f6);">
-                                            <i class="bi bi-chat-dots-fill"></i>
-                                        </a>
-
-                                    </div>
-                                </td>
-                                <?php endif; ?>
-
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-
-                </table>
-            </div>
-
-        </div>
+    <!-- HEADER -->
+    <div class="history-header mb-4">
+        <h4>📊 History Pengaduan</h4>
+        <p class="small-text">
+            Pantau progres, biaya, dan status laporan kamu
+        </p>
     </div>
 
-</div>
+    <!-- LIST DATA -->
+    <?php if (!empty($pengaduan)): ?>
+        <?php foreach ($pengaduan as $p): ?>
 
-<!-- BUTTON BACK -->
-<div class="container mt-3">
-    <a href="<?= base_url('dashboard') ?>" 
-       class="btn text-white"
-       style="background: linear-gradient(135deg,#6a5af9,#3b82f6);">
-        <i class="bi bi-arrow-left"></i> Kembali ke Dashboard
-    </a>
+        <div class="card card-history mb-3">
+            <div class="card-body">
+
+                <!-- HEADER CARD -->
+                <div class="d-flex justify-content-between align-items-start">
+
+                    <div>
+                        <h5 class="fw-bold mb-1"><?= $p['judul'] ?></h5>
+                        <div class="small-text">
+                            <?= $p['nama'] ?? '-' ?> • <?= $p['tanggal'] ?>
+                        </div>
+                    </div>
+
+                    <?php
+                    $statusClass = 'bg-secondary';
+                    if ($p['status'] == 'selesai') {
+                        $statusClass = 'bg-success';
+                    } elseif ($p['status'] == 'diproses') {
+                        $statusClass = 'bg-warning text-dark';
+                    }
+                    ?>
+                    <span class="badge badge-status <?= $statusClass ?>">
+                        <?= strtoupper($p['status']) ?>
+                    </span>
+                </div>
+
+                <hr>
+
+                <!-- DETAIL -->
+                <div class="row">
+
+                    <div class="col-md-8">
+
+                        <p><b>📍 Lokasi:</b> <?= $p['lokasi'] ?></p>
+                        <p><b>📂 Kategori:</b> <?= $p['kategori'] ?? '-' ?></p>
+
+                        <!-- PROGRES -->
+                        <h6 class="mt-3">🔧 Progres Pengerjaan</h6>
+
+                        <?php $listProgres = $progres[$p['id_pengaduan']] ?? null; ?>
+
+                        <?php if (!empty($listProgres)): ?>
+                            <?php foreach ($listProgres as $pr): ?>
+
+                                <div class="progres-box">
+
+                                    <b><?= $pr['progres'] ?>%</b> - <?= $pr['tindakan'] ?>
+
+                                    <div class="progress mt-1" style="height:6px;">
+                                        <div class="progress-bar bg-success" 
+                                             style="width: <?= $pr['progres'] ?>%">
+                                        </div>
+                                    </div>
+
+                                    <?php if (!empty($pr['foto'])): ?>
+                                        <img src="<?= base_url('uploads/' . $pr['foto']) ?>" 
+                                             width="80" class="mt-2 rounded">
+                                    <?php endif; ?>
+
+                                    <?php if (!empty($pr['biaya'])): ?>
+                                        <div class="mt-1">
+                                            💰 Rp <?= number_format($pr['biaya'],0,',','.') ?>
+                                        </div>
+                                    <?php endif; ?>
+
+                                </div>
+
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <span class="text-muted">Belum ada progres</span>
+                        <?php endif; ?>
+
+                        <!-- FEEDBACK -->
+                        <div class="mt-3">
+                            <b>💬 Feedback:</b><br>
+                            <?= $p['isi_feedback'] ?? '<span class="text-muted">Belum ada</span>' ?>
+                        </div>
+
+                        <!-- RATING -->
+                        <div class="mt-2">
+                            <b>⭐ Rating:</b>
+                            <?php if (!empty($p['rating'])): ?>
+                                <?= $p['rating'] ?> ⭐
+                            <?php elseif ($p['status'] == 'selesai'): ?>
+                                <a href="<?= base_url('rating/' . $p['id_pengaduan']) ?>" 
+                                   class="btn btn-sm btn-warning">
+                                   Beri Rating
+                                </a>
+                            <?php else: ?>
+                                -
+                            <?php endif; ?>
+                        </div>
+
+                    </div>
+
+                    <!-- FOTO UTAMA -->
+                    <div class="col-md-4 text-center">
+                        <?php if (!empty($p['foto'])): ?>
+                            <img src="<?= base_url('uploads/' . $p['foto']) ?>" 
+                                 class="img-fluid rounded shadow-sm">
+                        <?php else: ?>
+                            <span class="text-muted">Tidak ada foto</span>
+                        <?php endif; ?>
+                    </div>
+
+                </div>
+
+                <!-- AKSI ADMIN -->
+                <?php if (session()->get('role') == 'admin'): ?>
+                <div class="mt-3">
+                    <a href="<?= base_url('pengaduan/edit/' . $p['id_pengaduan']) ?>" 
+                       class="btn btn-warning btn-sm">
+                       Edit
+                    </a>
+
+                    <a href="<?= base_url('pengaduan/delete/' . $p['id_pengaduan']) ?>" 
+                       class="btn btn-danger btn-sm"
+                       onclick="return confirm('Yakin?')">
+                       Hapus
+                    </a>
+                </div>
+                <?php endif; ?>
+
+            </div>
+        </div>
+
+        <?php endforeach; ?>
+    <?php else: ?>
+        <div class="text-center text-muted">
+            Belum ada data
+        </div>
+    <?php endif; ?>
+
 </div>
 
 <?= $this->endSection() ?>

@@ -1,6 +1,90 @@
 <?= $this->extend('layouts/main') ?>
 <?= $this->section('content') ?>
+<style>
+.timeline {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
 
+.timeline-step {
+    text-align: center;
+    flex: 1;
+    position: relative;
+}
+
+.timeline-step::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: -50%;
+    width: 100%;
+    height: 3px;
+    background: #ddd;
+    z-index: 0;
+}
+
+.timeline-step:first-child::before {
+    display: none;
+}
+
+.timeline-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #ddd;
+    margin: auto;
+    z-index: 1;
+    position: relative;
+}
+
+.timeline-step.active .timeline-icon {
+    background: #28a745;
+}
+
+.timeline-step.active::before {
+    background: #28a745;
+}
+
+.timeline-label {
+    margin-top: 5px;
+    font-size: 12px;
+}
+</style>
+
+<?php
+$status = $pengaduan['status'];
+
+// tentukan step aktif
+$step1 = true; // dikirim selalu aktif
+$step2 = in_array($status, ['diproses', 'selesai']);
+$step3 = $status == 'selesai';
+$step4 = $status == 'selesai';
+?>
+
+<div class="timeline">
+
+    <div class="timeline-step <?= $step1 ? 'active' : '' ?>">
+        <div class="timeline-icon"></div>
+        <div class="timeline-label">Dikirim</div>
+    </div>
+
+    <div class="timeline-step <?= $step2 ? 'active' : '' ?>">
+        <div class="timeline-icon"></div>
+        <div class="timeline-label">Diproses</div>
+    </div>
+
+    <div class="timeline-step <?= $step3 ? 'active' : '' ?>">
+        <div class="timeline-icon"></div>
+        <div class="timeline-label">Feedback</div>
+    </div>
+
+    <div class="timeline-step <?= $step4 ? 'active' : '' ?>">
+        <div class="timeline-icon"></div>
+        <div class="timeline-label">Selesai</div>
+    </div>
+
+</div>
 <div class="container mt-4">
 
     <div class="card shadow border-0 rounded-4">
