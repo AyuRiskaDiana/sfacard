@@ -16,7 +16,7 @@ class Dashboard extends BaseController
             ->where('id_notifikasi', $id)
             ->delete();
 
-        return redirect()->to('/pengaduan/print');
+        return redirect()->to('/pengaduan');
     }
 
     public function index()

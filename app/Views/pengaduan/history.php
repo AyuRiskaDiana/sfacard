@@ -108,7 +108,8 @@
 
                                     <?php if (!empty($pr['foto'])): ?>
                                         <img src="<?= base_url('uploads/' . $pr['foto']) ?>" 
-                                             width="80" class="mt-2 rounded">
+                                             width="80" class="mt-2 rounded"
+                                             style="max-width: 80px; max-height: 80px; object-fit: cover;">
                                     <?php endif; ?>
 
                                     <?php if (!empty($pr['biaya'])): ?>
@@ -151,7 +152,8 @@
                     <div class="col-md-4 text-center">
                         <?php if (!empty($p['foto'])): ?>
                             <img src="<?= base_url('uploads/' . $p['foto']) ?>" 
-                                 class="img-fluid rounded shadow-sm">
+                                 class="img-fluid rounded shadow-sm"
+                                 style="max-width: 150px; max-height: 150px; object-fit: cover;">
                         <?php else: ?>
                             <span class="text-muted">Tidak ada foto</span>
                         <?php endif; ?>
