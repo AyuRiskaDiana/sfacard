@@ -13,6 +13,56 @@ class Pengaduan extends BaseController
         $this->pengaduan = new PengaduanModel();
     }
 
+    public function delete($id)
+{
+    // hanya admin yang boleh hapus
+    if (session()->get('role') != 'admin') {
+        return redirect()->to('/dashboard');
+    }
+
+    // ambil data pengaduan
+    $data = $this->pengaduan->find($id);
+
+    // hapus foto jika ada
+    if ($data && !empty($data['foto'])) {
+        $path = FCPATH . 'uploads/' . $data['foto'];
+
+        if (file_exists($path)) {
+            unlink($path);
+        }
+    }
+
+    // hapus data dari database
+    $this->pengaduan->delete($id);
+
+    return redirect()->to('/pengaduan')
+        ->with('success', 'Data pengaduan berhasil dihapus');
+}
+    public function store()
+{
+    $file = $this->request->getFile('foto');
+
+    if ($file && $file->isValid() && !$file->hasMoved()) {
+        $namaFoto = $file->getRandomName();
+        $file->move('uploads/', $namaFoto);
+    } else {
+        $namaFoto = null;
+    }
+
+    $this->pengaduan->save([
+        'id_user'     => session()->get('id_user'),
+        'id_aspirasi' => $this->request->getPost('id_aspirasi'),
+        'judul'       => $this->request->getPost('judul'),
+        'lokasi'      => $this->request->getPost('lokasi'),
+        'deskripsi'   => $this->request->getPost('deskripsi'),
+        'tanggal'     => $this->request->getPost('tanggal'),
+        'foto'        => $namaFoto,
+        'status'      => 'menunggu'
+    ]);
+
+    return redirect()->to('/pengaduan')
+        ->with('success', 'Pengaduan berhasil ditambahkan');
+}
     public function create()
 {
     $db = \Config\Database::connect();
