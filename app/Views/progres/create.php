@@ -1,6 +1,15 @@
 <?= $this->extend('layouts/main') ?>
 <?= $this->section('content') ?>
-<form action="<?= base_url('progres/store') ?>" method="post" enctype="multipart/form-data">
+
+<div class="container mt-4">
+    <div class="card shadow border-0 rounded-4" style="max-width: 500px; margin: 0 auto;">
+        <div class="card-header text-white rounded-top-4" style="background: linear-gradient(135deg,#6a5af9,#3b82f6);">
+            <h5 class="mb-0">
+                <i class="bi bi-graph-up-arrow"></i> Tambah Progres
+            </h5>
+        </div>
+        <div class="card-body">
+            <form action="<?= base_url('progres/store') ?>" method="post" enctype="multipart/form-data">
 
     <input type="hidden" name="id_pengaduan" value="<?= $id_pengaduan ?>">
 
@@ -25,6 +34,9 @@
     </div>
 
     <button class="btn btn-primary">Simpan</button>
-</form>
+            </form>
+        </div>
+    </div>
+</div>
 
 <?= $this->endSection() ?>
