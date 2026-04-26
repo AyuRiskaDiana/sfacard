@@ -158,12 +158,7 @@
                                                     <i class="bi bi-plus"></i>
                                                 </a>
 
-                                                <!-- EDIT -->
-                                                <a href="<?= base_url('pengaduan/edit/' . $p['id_pengaduan']) ?>"
-                                                    class="btn btn-outline-warning border-2">
-                                                    <i class="bi bi-pencil-square"></i>
-                                                </a>
-
+                                              
                                                 <!-- DELETE -->
                                                 <a href="<?= base_url('pengaduan/delete/' . $p['id_pengaduan']) ?>"
                                                     class="btn btn-outline-danger border-2"

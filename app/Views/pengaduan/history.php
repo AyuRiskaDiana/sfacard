@@ -166,22 +166,7 @@
 
                     </div>
 
-                    <!-- AKSI ADMIN -->
-                    <?php if (session()->get('role') == 'admin'): ?>
-                        <div class="mt-3">
-                            <a href="<?= base_url('pengaduan/edit/' . $p['id_pengaduan']) ?>"
-                                class="btn btn-warning btn-sm">
-                                Edit
-                            </a>
-
-                            <a href="<?= base_url('pengaduan/delete/' . $p['id_pengaduan']) ?>"
-                                class="btn btn-danger btn-sm"
-                                onclick="return confirm('Yakin ingin menghapus data ini?')">
-                                Hapus
-                            </a>
-                        </div>
-                    <?php endif; ?>
-
+                   
                 </div>
             </div>
 
