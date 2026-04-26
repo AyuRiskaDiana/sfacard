@@ -48,6 +48,12 @@ $routes->post('/users/update/(:num)', 'Users::update/$1');
 $routes->get('/pengaduan/kategori/(:num)', 'Pengaduan::perKategori/$1');
 $routes->get('users/admin', 'Users::admin');
 
+// Aspirasi
+$routes->get('/aspirasi', 'Aspirasi::index');
+$routes->get('/aspirasi/create', 'Aspirasi::create');
+$routes->post('/aspirasi/store', 'Aspirasi::store');
+$routes->get('/aspirasi/delete/(:num)', 'Aspirasi::delete/$1');
+
 $routes->get('/', 'Dashboard::index');
 $routes->get('dashboard', 'Dashboard::index');
 $routes->get('/backup', 'Backup::index', $admin);

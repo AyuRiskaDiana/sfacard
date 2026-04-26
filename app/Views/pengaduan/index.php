@@ -92,8 +92,7 @@
                             <th>Foto</th>
                             <th>Status</th>
                             <th>Feedback</th>
-                            <th>Rating</th>
-                            <th>Komentar</th>
+                           
 
                             <?php if (session()->get('role') == 'admin'): ?>
                                 <th width="220">Aksi</th>
@@ -138,10 +137,7 @@
 
                                     <td><?= $p['isi_feedback'] ?? 'Belum ada feedback' ?></td>
 
-                                    <td><?= !empty($p['rating']) ? $p['rating'] . ' ⭐' : '-' ?></td>
-
-                                    <td><?= !empty($p['komentar']) ? $p['komentar'] : '-' ?></td>
-
+                                    
                                     <?php if (session()->get('role') == 'admin'): ?>
                                         <td>
                                             <div class="d-flex justify-content-center gap-2">

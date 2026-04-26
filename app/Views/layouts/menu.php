@@ -42,8 +42,14 @@
                 </li>
 
                 <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url('aspirasi') ?>">
+                        <i class="bi bi-chat-square-text"></i> Kategori Aspirasi
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('pengaduan') ?>">
-                        <i class="bi bi-clipboard-data"></i> Aspirasi
+                        <i class="bi bi-clipboard-data"></i> Data Pengaduan
                     </a>
                 </li>
                 <?php endif; ?>

@@ -131,20 +131,15 @@
                             <?= $p['isi_feedback'] ?? '<span class="text-muted">Belum ada</span>' ?>
                         </div>
 
-                        <!-- RATING -->
+                       
+
+                        <!-- KOMENTAR -->
+                        <?php if (!empty($p['komentar'])): ?>
                         <div class="mt-2">
-                            <b>⭐ Rating:</b>
-                            <?php if (!empty($p['rating'])): ?>
-                                <?= $p['rating'] ?> ⭐
-                            <?php elseif ($p['status'] == 'selesai'): ?>
-                                <a href="<?= base_url('rating/' . $p['id_pengaduan']) ?>" 
-                                   class="btn btn-sm btn-warning">
-                                   Beri Rating
-                                </a>
-                            <?php else: ?>
-                                -
-                            <?php endif; ?>
+                            <b>💬 Komentar:</b><br>
+                            <span class="text-muted"><?= nl2br(htmlspecialchars($p['komentar'])) ?></span>
                         </div>
+                        <?php endif; ?>
 
                     </div>
 
