@@ -13,6 +13,16 @@ class Pengaduan extends BaseController
         $this->pengaduan = new PengaduanModel();
     }
 
+    public function create()
+{
+    $db = \Config\Database::connect();
+
+    $data['aspirasi'] = $db->table('aspirasi')
+        ->get()
+        ->getResultArray();
+
+    return view('pengaduan/create', $data);
+}
     // ================= FEEDBACK =================
     public function feedback($id)
     {
