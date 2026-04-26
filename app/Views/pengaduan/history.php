@@ -2,7 +2,7 @@
 <?= $this->section('content') ?>
 
 <style>
-   .history-header {
+.history-header {
     background: linear-gradient(135deg, #6a5af9, #3b82f6);
     color: white;
     border-radius: 15px;
@@ -11,7 +11,6 @@
     overflow: hidden;
 }
 
-/* efek halus biar gak bentrok */
 .history-header::after {
     content: "";
     position: absolute;
@@ -24,17 +23,28 @@
     transform: translate(50%, -50%);
 }
 
-/* judul */
 .history-header h4 {
     font-weight: 600;
     margin-bottom: 5px;
 }
 
-/* deskripsi */
 .history-header p {
-    color: rgba(255,255,255,0.85); /* 🔥 bukan abu-abu lagi */
+    color: rgba(255,255,255,0.85);
     font-size: 13px;
     margin-bottom: 0;
+}
+
+.progres-box {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-left: 4px solid #3b82f6;
+}
+
+.small-text {
+    font-size: 13px;
+    color: #6c757d;
 }
 </style>
 
@@ -52,134 +62,137 @@
     <?php if (!empty($pengaduan)): ?>
         <?php foreach ($pengaduan as $p): ?>
 
-        <div class="card card-history mb-3">
-            <div class="card-body">
+            <div class="card card-history mb-3 shadow-sm border-0 rounded-4">
+                <div class="card-body">
 
-                <!-- HEADER CARD -->
-                <div class="d-flex justify-content-between align-items-start">
+                    <!-- HEADER CARD -->
+                    <div class="d-flex justify-content-between align-items-start">
 
-                    <div>
-                        <h5 class="fw-bold mb-1"><?= $p['judul'] ?></h5>
-                        <div class="small-text">
-                            <?= $p['nama'] ?? '-' ?> • <?= $p['tanggal'] ?>
+                        <div>
+                            <h5 class="fw-bold mb-1"><?= $p['judul'] ?></h5>
+                            <div class="small-text">
+                                <?= $p['nama'] ?? '-' ?> • <?= $p['tanggal'] ?>
+                            </div>
                         </div>
+
+                        <?php
+                        $statusClass = 'bg-secondary';
+
+                        if ($p['status'] == 'selesai') {
+                            $statusClass = 'bg-success';
+                        } elseif ($p['status'] == 'diproses' || $p['status'] == 'proses') {
+                            $statusClass = 'bg-warning text-dark';
+                        } elseif ($p['status'] == 'menunggu') {
+                            $statusClass = 'bg-info text-dark';
+                        }
+                        ?>
+
+                        <span class="badge <?= $statusClass ?>">
+                            <?= strtoupper($p['status']) ?>
+                        </span>
                     </div>
 
-                    <?php
-                    $statusClass = 'bg-secondary';
-                    if ($p['status'] == 'selesai') {
-                        $statusClass = 'bg-success';
-                    } elseif ($p['status'] == 'diproses') {
-                        $statusClass = 'bg-warning text-dark';
-                    }
-                    ?>
-                    <span class="badge badge-status <?= $statusClass ?>">
-                        <?= strtoupper($p['status']) ?>
-                    </span>
-                </div>
+                    <hr>
 
-                <hr>
+                    <!-- DETAIL -->
+                    <div class="row">
 
-                <!-- DETAIL -->
-                <div class="row">
+                        <!-- KIRI -->
+                        <div class="col-md-8">
 
-                    <div class="col-md-8">
+                            <p><b>📍 Lokasi:</b> <?= $p['lokasi'] ?></p>
+                            <p><b>📂 Kategori:</b> <?= $p['kategori'] ?? '-' ?></p>
 
-                        <p><b>📍 Lokasi:</b> <?= $p['lokasi'] ?></p>
-                        <p><b>📂 Kategori:</b> <?= $p['kategori'] ?? '-' ?></p>
+                            <!-- PROGRES -->
+                            <h6 class="mt-3">🔧 Progres Pengerjaan</h6>
 
-                        <!-- PROGRES -->
-                        <h6 class="mt-3">🔧 Progres Pengerjaan</h6>
+                            <?php $listProgres = $progres[$p['id_pengaduan']] ?? null; ?>
 
-                        <?php $listProgres = $progres[$p['id_pengaduan']] ?? null; ?>
+                            <?php if (!empty($listProgres)): ?>
+                                <?php foreach ($listProgres as $pr): ?>
 
-                        <?php if (!empty($listProgres)): ?>
-                            <?php foreach ($listProgres as $pr): ?>
+                                    <div class="progres-box">
 
-                                <div class="progres-box">
+                                        <b><?= $pr['progres'] ?>%</b> - <?= $pr['tindakan'] ?>
 
-                                    <b><?= $pr['progres'] ?>%</b> - <?= $pr['tindakan'] ?>
-
-                                    <div class="progress mt-1" style="height:6px;">
-                                        <div class="progress-bar bg-success" 
-                                             style="width: <?= $pr['progres'] ?>%">
+                                        <div class="progress mt-2" style="height: 6px;">
+                                            <div class="progress-bar bg-success"
+                                                style="width: <?= $pr['progres'] ?>%">
+                                            </div>
                                         </div>
+
+                                        <?php if (!empty($pr['foto'])): ?>
+                                            <img src="<?= base_url('uploads/' . $pr['foto']) ?>"
+                                                width="80"
+                                                class="mt-2 rounded"
+                                                style="max-width:80px; max-height:80px; object-fit:cover;">
+                                        <?php endif; ?>
+
+                                        <?php if (!empty($pr['biaya'])): ?>
+                                            <div class="mt-2">
+                                                💰 Rp <?= number_format($pr['biaya'], 0, ',', '.') ?>
+                                            </div>
+                                        <?php endif; ?>
+
                                     </div>
 
-                                    <?php if (!empty($pr['foto'])): ?>
-                                        <img src="<?= base_url('uploads/' . $pr['foto']) ?>" 
-                                             width="80" class="mt-2 rounded"
-                                             style="max-width: 80px; max-height: 80px; object-fit: cover;">
-                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <span class="text-muted">Belum ada progres</span>
+                            <?php endif; ?>
 
-                                    <?php if (!empty($pr['biaya'])): ?>
-                                        <div class="mt-1">
-                                            💰 Rp <?= number_format($pr['biaya'],0,',','.') ?>
-                                        </div>
-                                    <?php endif; ?>
+                            <!-- FEEDBACK -->
+                            <div class="mt-3">
+                                <b>💬 Feedback:</b><br>
+                                <?= !empty($p['isi_feedback']) 
+                                    ? $p['isi_feedback'] 
+                                    : '<span class="text-muted">Belum ada</span>' ?>
+                            </div>
 
-                                </div>
+                        </div>
 
-                            <?php endforeach; ?>
-                        <?php else: ?>
-                            <span class="text-muted">Belum ada progres</span>
-                        <?php endif; ?>
+                        <!-- KANAN -->
+                        <div class="col-md-4 text-center">
 
-                        <!-- FEEDBACK -->
+                            <?php if (!empty($p['foto'])): ?>
+                                <img src="<?= base_url('uploads/' . $p['foto']) ?>"
+                                    class="img-fluid rounded shadow-sm"
+                                    style="max-width:150px; max-height:150px; object-fit:cover;">
+                            <?php else: ?>
+                                <span class="text-muted">Tidak ada foto</span>
+                            <?php endif; ?>
+
+                        </div>
+
+                    </div>
+
+                    <!-- AKSI ADMIN -->
+                    <?php if (session()->get('role') == 'admin'): ?>
                         <div class="mt-3">
-                            <b>💬 Feedback:</b><br>
-                            <?= $p['isi_feedback'] ?? '<span class="text-muted">Belum ada</span>' ?>
+                            <a href="<?= base_url('pengaduan/edit/' . $p['id_pengaduan']) ?>"
+                                class="btn btn-warning btn-sm">
+                                Edit
+                            </a>
+
+                            <a href="<?= base_url('pengaduan/delete/' . $p['id_pengaduan']) ?>"
+                                class="btn btn-danger btn-sm"
+                                onclick="return confirm('Yakin ingin menghapus data ini?')">
+                                Hapus
+                            </a>
                         </div>
-
-                       
-
-                        <!-- KOMENTAR -->
-                        <?php if (!empty($p['komentar'])): ?>
-                        <div class="mt-2">
-                            <b>💬 Komentar:</b><br>
-                            <span class="text-muted"><?= nl2br(htmlspecialchars($p['komentar'])) ?></span>
-                        </div>
-                        <?php endif; ?>
-
-                    </div>
-
-                    <!-- FOTO UTAMA -->
-                    <div class="col-md-4 text-center">
-                        <?php if (!empty($p['foto'])): ?>
-                            <img src="<?= base_url('uploads/' . $p['foto']) ?>" 
-                                 class="img-fluid rounded shadow-sm"
-                                 style="max-width: 150px; max-height: 150px; object-fit: cover;">
-                        <?php else: ?>
-                            <span class="text-muted">Tidak ada foto</span>
-                        <?php endif; ?>
-                    </div>
+                    <?php endif; ?>
 
                 </div>
-
-                <!-- AKSI ADMIN -->
-                <?php if (session()->get('role') == 'admin'): ?>
-                <div class="mt-3">
-                    <a href="<?= base_url('pengaduan/edit/' . $p['id_pengaduan']) ?>" 
-                       class="btn btn-warning btn-sm">
-                       Edit
-                    </a>
-
-                    <a href="<?= base_url('pengaduan/delete/' . $p['id_pengaduan']) ?>" 
-                       class="btn btn-danger btn-sm"
-                       onclick="return confirm('Yakin?')">
-                       Hapus
-                    </a>
-                </div>
-                <?php endif; ?>
-
             </div>
-        </div>
 
         <?php endforeach; ?>
+
     <?php else: ?>
+
         <div class="text-center text-muted">
             Belum ada data
         </div>
+
     <?php endif; ?>
 
 </div>

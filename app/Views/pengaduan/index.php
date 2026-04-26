@@ -34,7 +34,7 @@
         </div>
     <?php endif; ?>
 
-    <!-- FILTER -->
+    <!-- FILTER ADMIN -->
     <?php if (session()->get('role') == 'admin'): ?>
         <div class="card mb-3 shadow-sm">
             <div class="card-body">
@@ -64,7 +64,8 @@
                     </div>
 
                     <div class="col-md-2">
-                        <button type="submit" class="btn w-100 text-white"
+                        <button type="submit"
+                            class="btn w-100 text-white"
                             style="background: linear-gradient(135deg,#6a5af9,#3b82f6); border:none;">
                             <i class="bi bi-search"></i> Cari
                         </button>
@@ -92,7 +93,6 @@
                             <th>Foto</th>
                             <th>Status</th>
                             <th>Feedback</th>
-                           
 
                             <?php if (session()->get('role') == 'admin'): ?>
                                 <th width="220">Aksi</th>
@@ -101,8 +101,10 @@
                     </thead>
 
                     <tbody>
+
                         <?php if (!empty($pengaduan)): ?>
                             <?php foreach ($pengaduan as $p): ?>
+
                                 <tr>
 
                                     <td><?= $p['nama'] ?? '-' ?></td>
@@ -111,33 +113,41 @@
                                     <td><?= $p['lokasi'] ?></td>
                                     <td><?= $p['kategori'] ?? '-' ?></td>
 
+                                    <!-- FOTO -->
                                     <td>
                                         <?php if (!empty($p['foto'])): ?>
                                             <img src="<?= base_url('uploads/' . $p['foto']) ?>"
-                                                width="60" height="60"
+                                                width="60"
+                                                height="60"
                                                 class="rounded border">
                                         <?php else: ?>
                                             <span class="text-muted">-</span>
                                         <?php endif; ?>
                                     </td>
 
+                                    <!-- STATUS -->
                                     <td>
                                         <?php
                                         $statusClass = 'bg-warning text-dark';
+
                                         if ($p['status'] == 'selesai') {
                                             $statusClass = 'bg-success';
-                                        } elseif ($p['status'] == 'diproses') {
+                                        } elseif ($p['status'] == 'diproses' || $p['status'] == 'proses') {
                                             $statusClass = 'bg-info';
                                         }
                                         ?>
+
                                         <span class="badge <?= $statusClass ?>">
-                                            <?= $p['status'] ?>
+                                            <?= ucfirst($p['status']) ?>
                                         </span>
                                     </td>
 
-                                    <td><?= $p['isi_feedback'] ?? 'Belum ada feedback' ?></td>
+                                    <!-- FEEDBACK -->
+                                    <td>
+                                        <?= !empty($p['isi_feedback']) ? $p['isi_feedback'] : 'Belum ada feedback' ?>
+                                    </td>
 
-                                    
+                                    <!-- AKSI ADMIN -->
                                     <?php if (session()->get('role') == 'admin'): ?>
                                         <td>
                                             <div class="d-flex justify-content-center gap-2">
@@ -154,7 +164,7 @@
                                                     <i class="bi bi-pencil-square"></i>
                                                 </a>
 
-                                                <!-- HAPUS -->
+                                                <!-- DELETE -->
                                                 <a href="<?= base_url('pengaduan/delete/' . $p['id_pengaduan']) ?>"
                                                     class="btn btn-outline-danger border-2"
                                                     onclick="return confirm('Yakin hapus data?')">
@@ -172,14 +182,19 @@
                                     <?php endif; ?>
 
                                 </tr>
+
                             <?php endforeach; ?>
+
                         <?php else: ?>
+
                             <tr>
-                                <td colspan="10" class="text-muted">
+                                <td colspan="9" class="text-muted">
                                     <i class="bi bi-info-circle"></i> Belum ada data
                                 </td>
                             </tr>
+
                         <?php endif; ?>
+
                     </tbody>
 
                 </table>

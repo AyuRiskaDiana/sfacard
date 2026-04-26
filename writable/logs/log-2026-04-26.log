@@ -271,3 +271,1891 @@ DEBUG - 2026-04-26 10:24:23 --> Session: Class initialized using 'CodeIgniter\Se
 DEBUG - 2026-04-26 10:24:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2026-04-26 10:24:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2026-04-26 10:24:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:25:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:25:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:25:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:25:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:25:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:25:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:25:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:25:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:28:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:28:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:28:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:28:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:28:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:29:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:29:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:30:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-26 10:30:14 --> Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 5 APPPATH\Controllers\Pengaduan.php(176): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:30:14 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'sfacard.rating' doesn't exist
+[Method: GET, Route: pengaduan]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 2 APPPATH\Controllers\Pengaduan.php(176): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:30:14 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 4 APPPATH\Controllers\Pengaduan.php(176): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:30:14 --> [Caused by] mysqli_sql_exception: Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 5 APPPATH\Controllers\Pengaduan.php(176): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-26 10:30:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:30:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-26 10:30:19 --> Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 5 APPPATH\Controllers\Pengaduan.php(176): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:30:19 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'sfacard.rating' doesn't exist
+[Method: GET, Route: pengaduan]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 2 APPPATH\Controllers\Pengaduan.php(176): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:30:19 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 4 APPPATH\Controllers\Pengaduan.php(176): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:30:19 --> [Caused by] mysqli_sql_exception: Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 5 APPPATH\Controllers\Pengaduan.php(176): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-26 10:32:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:33:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:33:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:33:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:33:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-26 10:33:10 --> Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 5 APPPATH\Controllers\Pengaduan.php(176): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:33:10 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'sfacard.rating' doesn't exist
+[Method: GET, Route: pengaduan]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 2 APPPATH\Controllers\Pengaduan.php(176): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:33:10 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 4 APPPATH\Controllers\Pengaduan.php(176): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:33:10 --> [Caused by] mysqli_sql_exception: Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 5 APPPATH\Controllers\Pengaduan.php(176): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-26 10:33:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-26 10:33:52 --> Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 5 APPPATH\Controllers\Pengaduan.php(176): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:33:52 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'sfacard.rating' doesn't exist
+[Method: GET, Route: pengaduan]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 2 APPPATH\Controllers\Pengaduan.php(176): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:33:52 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 4 APPPATH\Controllers\Pengaduan.php(176): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:33:52 --> [Caused by] mysqli_sql_exception: Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 5 APPPATH\Controllers\Pengaduan.php(176): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-26 10:33:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-26 10:33:53 --> Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 5 APPPATH\Controllers\Pengaduan.php(176): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:33:53 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'sfacard.rating' doesn't exist
+[Method: GET, Route: pengaduan]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 2 APPPATH\Controllers\Pengaduan.php(176): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:33:53 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 4 APPPATH\Controllers\Pengaduan.php(176): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:33:53 --> [Caused by] mysqli_sql_exception: Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 5 APPPATH\Controllers\Pengaduan.php(176): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-26 10:37:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-26 10:37:53 --> Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 5 APPPATH\Controllers\Pengaduan.php(160): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:37:53 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'sfacard.rating' doesn't exist
+[Method: GET, Route: pengaduan]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 2 APPPATH\Controllers\Pengaduan.php(160): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:37:53 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 4 APPPATH\Controllers\Pengaduan.php(160): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:37:53 --> [Caused by] mysqli_sql_exception: Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 5 APPPATH\Controllers\Pengaduan.php(160): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-26 10:37:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-26 10:37:54 --> Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 5 APPPATH\Controllers\Pengaduan.php(160): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:37:54 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'sfacard.rating' doesn't exist
+[Method: GET, Route: pengaduan]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 2 APPPATH\Controllers\Pengaduan.php(160): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:37:54 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 4 APPPATH\Controllers\Pengaduan.php(160): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:37:54 --> [Caused by] mysqli_sql_exception: Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 5 APPPATH\Controllers\Pengaduan.php(160): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-26 10:38:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:38:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-26 10:38:15 --> Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 5 APPPATH\Controllers\Pengaduan.php(160): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:38:15 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'sfacard.rating' doesn't exist
+[Method: GET, Route: pengaduan]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 2 APPPATH\Controllers\Pengaduan.php(160): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:38:15 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 4 APPPATH\Controllers\Pengaduan.php(160): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:38:15 --> [Caused by] mysqli_sql_exception: Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 5 APPPATH\Controllers\Pengaduan.php(160): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-26 10:38:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:39:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:39:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:39:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-26 10:39:06 --> Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+ORDER BY `pengaduan`.`id_pengaduan` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+ORDER BY `pengaduan`.`id_pengaduan` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+ORDER BY `pengaduan`.`id_pengaduan` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+ORDER BY `pengaduan`.`id_pengaduan` DESC', [], false)
+ 5 APPPATH\Controllers\Pengaduan.php(91): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->history()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:39:06 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'sfacard.rating' doesn't exist
+[Method: GET, Route: pengaduan/history]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+ORDER BY `pengaduan`.`id_pengaduan` DESC', [], false)
+ 2 APPPATH\Controllers\Pengaduan.php(91): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->history()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:39:06 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+ORDER BY `pengaduan`.`id_pengaduan` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+ORDER BY `pengaduan`.`id_pengaduan` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+ORDER BY `pengaduan`.`id_pengaduan` DESC', [], false)
+ 4 APPPATH\Controllers\Pengaduan.php(91): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->history()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:39:06 --> [Caused by] mysqli_sql_exception: Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+ORDER BY `pengaduan`.`id_pengaduan` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+ORDER BY `pengaduan`.`id_pengaduan` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+ORDER BY `pengaduan`.`id_pengaduan` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+ORDER BY `pengaduan`.`id_pengaduan` DESC', [], false)
+ 5 APPPATH\Controllers\Pengaduan.php(91): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->history()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-26 10:44:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:44:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:44:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-26 10:44:09 --> Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 5 APPPATH\Controllers\Pengaduan.php(160): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:44:09 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'sfacard.rating' doesn't exist
+[Method: GET, Route: pengaduan]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 2 APPPATH\Controllers\Pengaduan.php(160): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:44:09 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 4 APPPATH\Controllers\Pengaduan.php(160): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:44:09 --> [Caused by] mysqli_sql_exception: Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 5 APPPATH\Controllers\Pengaduan.php(160): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-26 10:44:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:44:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:44:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:44:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:44:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:44:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:44:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-26 10:44:29 --> Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 5 APPPATH\Controllers\Pengaduan.php(160): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:44:29 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'sfacard.rating' doesn't exist
+[Method: GET, Route: pengaduan]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 2 APPPATH\Controllers\Pengaduan.php(160): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:44:29 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 4 APPPATH\Controllers\Pengaduan.php(160): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:44:29 --> [Caused by] mysqli_sql_exception: Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 5 APPPATH\Controllers\Pengaduan.php(160): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-26 10:45:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-26 10:45:52 --> Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 5 APPPATH\Controllers\Pengaduan.php(160): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:45:52 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'sfacard.rating' doesn't exist
+[Method: GET, Route: pengaduan]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 2 APPPATH\Controllers\Pengaduan.php(160): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:45:52 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 4 APPPATH\Controllers\Pengaduan.php(160): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:45:52 --> [Caused by] mysqli_sql_exception: Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 5 APPPATH\Controllers\Pengaduan.php(160): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-26 10:45:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:45:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-26 10:45:55 --> Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+ORDER BY `pengaduan`.`id_pengaduan` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+ORDER BY `pengaduan`.`id_pengaduan` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+ORDER BY `pengaduan`.`id_pengaduan` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+ORDER BY `pengaduan`.`id_pengaduan` DESC', [], false)
+ 5 APPPATH\Controllers\Pengaduan.php(91): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->history()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:45:55 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'sfacard.rating' doesn't exist
+[Method: GET, Route: pengaduan/history]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+ORDER BY `pengaduan`.`id_pengaduan` DESC', [], false)
+ 2 APPPATH\Controllers\Pengaduan.php(91): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->history()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:45:55 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+ORDER BY `pengaduan`.`id_pengaduan` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+ORDER BY `pengaduan`.`id_pengaduan` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+ORDER BY `pengaduan`.`id_pengaduan` DESC', [], false)
+ 4 APPPATH\Controllers\Pengaduan.php(91): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->history()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:45:55 --> [Caused by] mysqli_sql_exception: Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+ORDER BY `pengaduan`.`id_pengaduan` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+ORDER BY `pengaduan`.`id_pengaduan` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+ORDER BY `pengaduan`.`id_pengaduan` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+ORDER BY `pengaduan`.`id_pengaduan` DESC', [], false)
+ 5 APPPATH\Controllers\Pengaduan.php(91): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->history()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-26 10:48:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-26 10:48:31 --> Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 5 APPPATH\Controllers\Pengaduan.php(160): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:48:31 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'sfacard.rating' doesn't exist
+[Method: GET, Route: pengaduan]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 2 APPPATH\Controllers\Pengaduan.php(160): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:48:31 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 4 APPPATH\Controllers\Pengaduan.php(160): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:48:31 --> [Caused by] mysqli_sql_exception: Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 5 APPPATH\Controllers\Pengaduan.php(160): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-26 10:49:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:49:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:49:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:49:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-26 10:49:38 --> Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 5 APPPATH\Controllers\Pengaduan.php(160): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:49:38 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'sfacard.rating' doesn't exist
+[Method: GET, Route: pengaduan]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 2 APPPATH\Controllers\Pengaduan.php(160): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:49:38 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 4 APPPATH\Controllers\Pengaduan.php(160): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:49:38 --> [Caused by] mysqli_sql_exception: Table 'sfacard.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pengaduan`.*, `users`.`nama`, `aspirasi`.`kategori`, `feedback`.`isi_feedback`, `rating`.`rating`, `rating`.`komentar`
+FROM `pengaduan`
+LEFT JOIN `users` ON `users`.`id_user` = `pengaduan`.`id_user`
+LEFT JOIN `aspirasi` ON `aspirasi`.`id_aspirasi` = `pengaduan`.`id_aspirasi`
+LEFT JOIN `feedback` ON `feedback`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+LEFT JOIN `rating` ON `rating`.`id_pengaduan` = `pengaduan`.`id_pengaduan`
+GROUP BY `pengaduan`.`id_pengaduan`', [], false)
+ 5 APPPATH\Controllers\Pengaduan.php(160): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pengaduan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pengaduan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-26 10:56:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:56:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:56:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:56:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:56:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:56:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:56:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:56:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:57:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:57:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:57:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:58:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:58:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:58:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:58:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:58:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:58:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:58:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 11:00:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 11:00:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 11:00:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 11:01:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

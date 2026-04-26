@@ -63,9 +63,6 @@ $routes->post('/restore/auth', 'Restore::auth');
 $routes->get('/restore/form', 'Restore::form');
 $routes->post('/restore/process', 'Restore::process');
 
-$routes->post('rating/save', 'Rating::save');
-$routes->get('rating/(:num)', 'Rating::index/$1');
-$routes->post('pengaduan/saveRating', 'Pengaduan::saveRating');
 
 $routes->get('/progres/create/(:num)', 'Progres::create/$1');
 $routes->post('/progres/store', 'Progres::store');
