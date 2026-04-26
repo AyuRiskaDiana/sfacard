@@ -5,10 +5,25 @@
         <!-- KIRI (LOGO + MENU) -->
         <div class="d-flex align-items-center flex-wrap">
 
-            <!-- LOGO -->
-            <span class="logo-text me-3">
-                SFACARD <i class="bi bi-yelp"></i>
-            </span>
+            <!-- LOGO + NAMA APLIKASI -->
+            <div class="d-flex align-items-center me-4">
+
+                <a href="<?= base_url('/') ?>" class="me-2">
+                    <img src="<?= base_url('assets/img/S.png?v=' . time()) ?>" 
+                         alt="Logo SFACARD" 
+                         height="55">
+                </a>
+
+                <div>
+                    <h5 class="mb-0 fw-bold text-white">
+                        SIPENTRA
+                    </h5>
+                    <small class="text-light">
+                        Sistem Pengaduan Aspirasi
+                    </small>
+                </div>
+
+            </div>
 
             <!-- MENU -->
             <ul class="nav">
@@ -43,7 +58,7 @@
 
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('pengaduan/history/') ?>">
-                        <h4><i class="bi bi-bar-chart-line"></i> History Pengaduan</h4>
+                        <i class="bi bi-bar-chart-line"></i> History Pengaduan
                     </a>
                 </li>
 
@@ -56,10 +71,12 @@
 
                 <?php if (session()->get('role') == 'admin') : ?>
                     <li class="nav-item">
-                        <a href="<?= base_url('/backup') ?>" class="btn btn-success">Backup Database</a>
+                        <a href="<?= base_url('/backup') ?>" class="btn btn-success ms-2">
+                            Backup Database
+                        </a>
                     </li>
                 <?php endif; ?>
-                
+
                 <li class="nav-item">
                     <a class="nav-link text-warning" href="<?= site_url('/logout') ?>">
                         <i class="bi bi-box-arrow-right"></i> Logout
@@ -79,7 +96,8 @@
             </div>
 
             <img src="<?= base_url('uploads/users/' . session()->get('foto')) ?>" 
-                 width="50" height="50" 
+                 width="50" 
+                 height="50" 
                  class="user-img">
 
         </div>

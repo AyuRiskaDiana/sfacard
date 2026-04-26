@@ -48,20 +48,23 @@ class Dashboard extends BaseController
         $pengaduan = $builder->get()->getResultArray();
 
         // =======================
-        // HITUNG STATUS
+        // HITUNG STATUS (HANYA ADMIN)
         // =======================
-        $diproses = $db->table('pengaduan')
-            ->whereIn('status', ['proses', 'diproses'])
-            ->countAllResults();
+        $diproses = 0;
+        $selesai = 0;
+        $total_user = 0;
 
-        $selesai = $db->table('pengaduan')
-            ->where('status', 'selesai')
-            ->countAllResults();
+        if (session()->get('role') == 'admin') {
+            $diproses = $db->table('pengaduan')
+                ->whereIn('status', ['proses', 'diproses'])
+                ->countAllResults();
 
-        // =======================
-        // TOTAL USER
-        // =======================
-        $total_user = $db->table('users')->countAllResults();
+            $selesai = $db->table('pengaduan')
+                ->where('status', 'selesai')
+                ->countAllResults();
+
+            $total_user = $db->table('users')->countAllResults();
+        }
 
         // =======================
         // 📊 GRAFIK

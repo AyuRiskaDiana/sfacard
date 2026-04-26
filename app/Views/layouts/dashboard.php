@@ -60,6 +60,7 @@
                 : 'Pantau status pengaduan kamu' ?>
         </p>
 
+        <?php if (session()->get('role') == 'admin'): ?>
         <div class="row mt-3">
 
             <div class="col-md-3">
@@ -83,16 +84,15 @@
                 </div>
             </div>
 
-            <?php if (session()->get('role') == 'admin'): ?>
             <div class="col-md-3">
                 <div class="stat-card">
                     <h6>User</h6>
                     <h4><?= $total_user ?? 0 ?></h4>
                 </div>
             </div>
-            <?php endif; ?>
 
         </div>
+        <?php endif; ?>
     </div>
 
     <!-- GRAFIK -->
@@ -109,9 +109,15 @@
 
                 <h5>Data Pengaduan Terbaru</h5>
 
+                <?php if (empty($pengaduan)): ?>
+                    <div class="alert alert-info mt-3">Belum ada pengaduan</div>
+                <?php else: ?>
                 <table class="table mt-3">
                     <thead>
                         <tr>
+                            <?php if (session()->get('role') == 'admin'): ?>
+                            <th>User</th>
+                            <?php endif; ?>
                             <th>Judul</th>
                             <th>Status</th>
                         </tr>
@@ -120,6 +126,9 @@
                     <tbody>
                     <?php foreach (array_slice($pengaduan, 0, 5) as $p): ?>
                         <tr>
+                            <?php if (session()->get('role') == 'admin'): ?>
+                            <td><?= $p['nama'] ?? '-' ?></td>
+                            <?php endif; ?>
                             <td><?= $p['judul'] ?></td>
                             <td>
                                 <span class="badge 
@@ -133,6 +142,7 @@
                     </tbody>
 
                 </table>
+                <?php endif; ?>
             </div>
         </div>
 
