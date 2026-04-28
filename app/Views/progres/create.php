@@ -32,7 +32,14 @@
         <label>Foto</label>
         <input type="file" name="foto" class="form-control">
     </div>
-
+    <div class="mb-3">
+    <label class="form-label">Feedback</label>
+    <textarea 
+        name="feedback"
+        class="form-control"
+        rows="4"
+        placeholder="Masukkan feedback..."></textarea>
+</div>
     <button class="btn btn-primary">Simpan</button>
             </form>
         </div>

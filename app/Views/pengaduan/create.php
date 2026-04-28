@@ -41,8 +41,8 @@
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Judul</label>
-                    <input type="text" name="judul" class="form-control" placeholder="Masukkan judul">
+                    <label class="form-label">Topik Pengaduan</label>
+                    <input type="text" name="judul" class="form-control" placeholder="Masukkan Topik Pengaduan">
                 </div>
 
                 <div class="mb-3">

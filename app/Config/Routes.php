@@ -68,3 +68,7 @@ $routes->get('/progres/create/(:num)', 'Progres::create/$1');
 $routes->post('/progres/store', 'Progres::store');
 
 $routes->get('dashboard/readNotif/(:num)', 'Dashboard::readNotif/$1');
+
+
+$routes->get('pengaduan/tolak/(:num)', 'Pengaduan::tolak/$1');
+$routes->post('pengaduan/simpanPenolakan', 'Pengaduan::simpanPenolakan');

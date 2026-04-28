@@ -148,7 +148,7 @@
                                     ? $p['isi_feedback'] 
                                     : '<span class="text-muted">Belum ada</span>' ?>
                             </div>
-
+<?php if ($p['status'] == 'ditolak'): ?> <div class="alert alert-danger mt-2"> <b>Aspirasi Ditolak</b><br> Alasan: <?= $p['alasan_penolakan'] ?? '-' ?> </div> <?php endif; ?>
                         </div>
 
                         <!-- KANAN -->

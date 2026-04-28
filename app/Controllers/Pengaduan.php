@@ -13,6 +13,49 @@ class Pengaduan extends BaseController
         $this->pengaduan = new PengaduanModel();
     }
 
+    
+public function edit($id)
+{
+    if (session()->get('role') != 'admin') {
+        return redirect()->to('/dashboard');
+    }
+
+    $data['pengaduan'] = $this->pengaduan->find($id);
+
+    if (!$data['pengaduan']) {
+        throw new \CodeIgniter\Exceptions\PageNotFoundException('Data pengaduan tidak ditemukan');
+    }
+
+    return view('pengaduan/edit', $data);
+}
+
+public function update($id)
+{
+    if (session()->get('role') != 'admin') {
+        return redirect()->to('/dashboard');
+    }
+
+    $file = $this->request->getFile('foto');
+
+    if ($file && $file->isValid() && !$file->hasMoved()) {
+        $namaFoto = $file->getRandomName();
+        $file->move('uploads/', $namaFoto);
+    } else {
+        $namaFoto = $this->request->getPost('foto_lama');
+    }
+
+    $this->pengaduan->update($id, [
+        'judul'     => $this->request->getPost('judul'),
+        'foto'      => $namaFoto,
+        'lokasi'    => $this->request->getPost('lokasi'),
+        'deskripsi' => $this->request->getPost('deskripsi'),
+        'tanggal'   => $this->request->getPost('tanggal'),
+        'status'    => $this->request->getPost('status')
+    ]);
+
+    return redirect()->to('/pengaduan')
+        ->with('success', 'Data berhasil diupdate');
+}
     public function delete($id)
 {
     // hanya admin yang boleh hapus
@@ -38,8 +81,67 @@ class Pengaduan extends BaseController
     return redirect()->to('/pengaduan')
         ->with('success', 'Data pengaduan berhasil dihapus');
 }
-    public function store()
+
+public function tolak($id)
 {
+    if (session()->get('role') != 'admin') {
+        return redirect()->to('/dashboard');
+    }
+
+    $data['pengaduan'] = $this->pengaduan->find($id);
+
+    if (!$data['pengaduan']) {
+        return redirect()->to('/pengaduan')
+            ->with('error', 'Data tidak ditemukan');
+    }
+
+    return view('pengaduan/tolak', $data);
+}
+
+public function simpanPenolakan()
+{
+    $db = \Config\Database::connect();
+
+    $id_pengaduan = $this->request->getPost('id_pengaduan');
+    $alasan = $this->request->getPost('alasan_penolakan');
+
+    // ambil data pengaduan
+    $pengaduan = $db->table('pengaduan')
+        ->where('id_pengaduan', $id_pengaduan)
+        ->get()
+        ->getRowArray();
+
+    if (!$pengaduan) {
+        return redirect()->back()->with('error', 'Data tidak ditemukan');
+    }
+
+    // simpan penolakan
+    $db->table('penolakan')->insert([
+        'id_pengaduan' => $id_pengaduan,
+        'alasan_penolakan' => $alasan,
+        'tanggal_penolakan' => date('Y-m-d H:i:s'),
+        'id_admin' => session()->get('id_user')
+    ]);
+
+    // update status pengaduan
+    $db->table('pengaduan')
+        ->where('id_pengaduan', $id_pengaduan)
+        ->update([
+            'status' => 'ditolak'
+        ]);
+
+    // hapus feedback lama
+    $db->table('feedback')
+        ->where('id_pengaduan', $id_pengaduan)
+        ->delete();
+
+    return redirect()->to('/pengaduan')
+        ->with('success', 'Pengaduan berhasil ditolak');
+}
+   public function store()
+{
+    $db = \Config\Database::connect();
+
     $file = $this->request->getFile('foto');
 
     if ($file && $file->isValid() && !$file->hasMoved()) {
@@ -49,6 +151,7 @@ class Pengaduan extends BaseController
         $namaFoto = null;
     }
 
+    // simpan pengaduan
     $this->pengaduan->save([
         'id_user'     => session()->get('id_user'),
         'id_aspirasi' => $this->request->getPost('id_aspirasi'),
@@ -59,6 +162,21 @@ class Pengaduan extends BaseController
         'foto'        => $namaFoto,
         'status'      => 'menunggu'
     ]);
+
+    // ambil semua admin
+    $adminList = $db->table('users')
+        ->where('role', 'admin')
+        ->get()
+        ->getResultArray();
+
+    // kirim notif ke semua admin
+    foreach ($adminList as $admin) {
+        $db->table('notifikasi')->insert([
+            'id_user' => $admin['id_user'],
+            'pesan'   => 'Ada pengaduan baru dari user: ' . session()->get('nama'),
+            'status'  => 'baru'
+        ]);
+    }
 
     return redirect()->to('/pengaduan')
         ->with('success', 'Pengaduan berhasil ditambahkan');
@@ -85,22 +203,33 @@ class Pengaduan extends BaseController
     }
 
     public function saveFeedback()
-    {
-        $model = new \App\Models\FeedbackModel();
+{
+    $db = \Config\Database::connect();
 
-        $model->save([
-            'id_pengaduan' => $this->request->getPost('id_pengaduan'),
-            'isi_feedback' => $this->request->getPost('isi_feedback')
-        ]);
+    $id_pengaduan = $this->request->getPost('id_pengaduan');
+    $isi_feedback = $this->request->getPost('isi_feedback');
 
-        // ubah status otomatis
-        $this->pengaduan->update(
-            $this->request->getPost('id_pengaduan'),
-            ['status' => 'selesai']
-        );
+    // simpan ke tabel feedback
+    $feedbackModel = new \App\Models\FeedbackModel();
+    $feedbackModel->save([
+        'id_pengaduan' => $id_pengaduan,
+        'isi_feedback' => $isi_feedback
+    ]);
 
-        return redirect()->to('/pengaduan');
-    }
+    // simpan juga ke progres_pengaduan
+    $db->table('progres_pengaduan')->insert([
+        'id_pengaduan' => $id_pengaduan,
+        'tindakan'     => 'Feedback: ' . $isi_feedback,
+        'progres'      => 90,
+        'tanggal'      => date('Y-m-d')
+    ]);
+
+    // TIDAK otomatis selesai
+    // status tetap diproses
+
+    return redirect()->to('/pengaduan')
+        ->with('success', 'Feedback berhasil disimpan');
+}
 
     // ================= PRINT =================
     public function print()
@@ -169,14 +298,18 @@ class Pengaduan extends BaseController
         $db = \Config\Database::connect();
         $builder = $db->table('pengaduan');
 
-        $builder->select('pengaduan.*, 
-                          users.nama, 
-                          aspirasi.kategori, 
-                          feedback.isi_feedback');
+       $builder->select('
+    pengaduan.*,
+    users.nama,
+    aspirasi.kategori,
+    feedback.isi_feedback,
+    penolakan.alasan_penolakan
+');
 
         $builder->join('users', 'users.id_user = pengaduan.id_user', 'left');
         $builder->join('aspirasi', 'aspirasi.id_aspirasi = pengaduan.id_aspirasi', 'left');
         $builder->join('feedback', 'feedback.id_pengaduan = pengaduan.id_pengaduan', 'left');
+        $builder->join('penolakan', 'penolakan.id_pengaduan = pengaduan.id_pengaduan', 'left');
 
         if (session()->get('role') != 'admin') {
             $builder->where('pengaduan.id_user', session()->get('id_user'));

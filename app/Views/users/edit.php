@@ -20,6 +20,9 @@
 
                     <form action="<?= base_url('users/update/' . $user['id_user']) ?>" method="post" enctype="multipart/form-data">
 
+                        <!-- ROLE (HIDDEN) -->
+                        <input type="hidden" name="role" value="<?= $user['role'] ?>">
+
                         <!-- NAMA -->
                         <div class="mb-3">
                             <label class="form-label">Nama Lengkap</label>

@@ -15,8 +15,13 @@ class Progres extends BaseController
     {
         $db = \Config\Database::connect();
 
-        // DEBUG (hapus nanti)
-        // dd($this->request->getPost());
+        $id_pengaduan = $this->request->getPost('id_pengaduan');
+        $progres      = $this->request->getPost('progres');
+        $tindakan     = $this->request->getPost('tindakan');
+        $biaya        = $this->request->getPost('biaya');
+
+        // feedback pakai trim agar spasi kosong tidak tersimpan
+        $feedback = trim($this->request->getPost('feedback'));
 
         $file = $this->request->getFile('foto');
 
@@ -27,15 +32,38 @@ class Progres extends BaseController
             $namaFoto = null;
         }
 
+        // simpan progres
         $db->table('progres_pengaduan')->insert([
-            'id_pengaduan' => $this->request->getPost('id_pengaduan'),
-            'tanggal'      => date('Y-m-d H:i:s'), // 🔥 WAJIB
-            'progres'      => $this->request->getPost('progres'),
-            'tindakan'     => $this->request->getPost('tindakan'),
+            'id_pengaduan' => $id_pengaduan,
+            'tanggal'      => date('Y-m-d H:i:s'),
+            'progres'      => $progres,
+            'tindakan'     => $tindakan,
             'foto'         => $namaFoto,
-            'biaya'        => $this->request->getPost('biaya'),
+            'biaya'        => $biaya,
         ]);
 
-        return redirect()->to('/pengaduan')->with('success', 'Progres berhasil ditambahkan');
-    }
+        // simpan feedback jika diisi
+        if (!empty($feedback)) {
+            $db->table('feedback')->insert([
+                'id_pengaduan' => $id_pengaduan,
+                'isi_feedback' => $feedback
+            ]);
+        }
+
+       // otomatis ubah status berdasarkan progres
+if ($progres >= 100) {
+    $status = 'selesai';
+} else {
+    $status = 'proses';
+}
+
+$db->table('pengaduan')
+    ->where('id_pengaduan', $id_pengaduan)
+    ->update([
+        'status' => $status
+    ]);
+
+return redirect()->to('/pengaduan')
+    ->with('success', 'Progres berhasil ditambahkan');
+}
 }
